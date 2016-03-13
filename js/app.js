@@ -234,60 +234,14 @@ webpackJsonp([1],[
 	var prepopulateDatabase = function () {
 	    logmsg("var prepopulateDatabase = function() { ... ");
 	    try {
-	        window.asset2sd.copyDir({
-	            asset_directory: "www/sql",
-	            destination_directory: "Android/data/com.phonegap.lion/files/sql"
-	        }, function () {
-	            logmsg('success first');
-	            var fileId = "onion.db";
-	            var db = window.sqlitePlugin.openDatabase("onion.db");
-	            logerr(db);
-	            window.resolveLocalFileSystemURL(window.cordova.file.externalDataDirectory + "sql/", function (directoryEntryInitial) {
-	                logmsg("source directoryEntryInitial");
-	                logerr(directoryEntryInitial);
-	                directoryEntryInitial.getFile(fileId, { create: false, exclusive: true }, function (fileEntry) {
-	                    logerr(fileEntry);
-	                    var fileURL = fileEntry.toURL();
-	                    logmsg(fileURL);
-	                    var databasePath = window.cordova.file.applicationStorageDirectory + 'databases/';
-	                    logmsg("databasePath:");
-	                    logmsg(databasePath);
-	                    var dbName = 'onion.db';
-	                    window.resolveLocalFileSystemURL(databasePath, function (directoryEntryDatabases) {
-	                        logmsg("directoryEntryDatabases");
-	                        logerr(directoryEntryDatabases);
-	                        fileEntry.copyTo(directoryEntryDatabases, dbName, function () {
-	                            logmsg('copying was successful');
-	                            var directoryReader = directoryEntryDatabases.createReader();
-	                            function success(entries) {
-	                                logmsg(" vvvvv ");
-	                                logmsg("Successfully listing directory contents: ");
-	                                var i;
-	                                for (i = 0; i < entries.length; i++) {
-	                                    logmsg('Entrie: ');
-	                                    logerr(entries[i]);
-	                                }
-	                                logmsg(" ^^^^^ ");
-	                            }
-	                            function fail(error) {
-	                                logmsg("Failed to list directory contents: ");
-	                                logmsg(error);
-	                            }
-	                            directoryReader.readEntries(success, fail);
-	                            startUp();
-	                        }, function () {
-	                            logmsg('unsuccessful copying');
-	                        });
-	                    }, function (errorObject) {
-	                        logmsg(JSON.stringify(errorObject));
-	                        logerr(errorObject);
-	                    });
-	                }, logerr);
-	            }, logerr);
-	        }, function () {
-	            logmsg('fail first');
+	        function copysuccess(result) {
+	            logerr(result);
 	            startUp();
-	        });
+	        }
+	        function copyerror(result) {
+	            logerr(result);
+	        }
+	        window.plugins.sqlDB.copy("onion.db", 0, copysuccess, copyerror);
 	        if (false) {
 	            var fileId = "onion.db";
 	            window.resolveLocalFileSystemURL(window.LocalFileSystem.PERSISTENT, function (directoryEntry) {
@@ -361,10 +315,18 @@ webpackJsonp([1],[
 	    objDiv.scrollTop = 99999;
 	};
 	var logerr = function (err) {
-	    console.log(JSON.stringify(err));
-	    document.getElementById('debugging').innerHTML += "<br/>" + JSON.stringify(err);
-	    var objDiv = document.getElementById("debugging");
-	    objDiv.scrollTop = 99999;
+	    try {
+	        var msg = JSON.stringify(err);
+	    }
+	    catch (isnoobjecterr) {
+	        var msg = err;
+	    }
+	    finally {
+	        console.log(msg);
+	        document.getElementById('debugging').innerHTML += "<br/>" + JSON.stringify(err);
+	        var objDiv = document.getElementById("debugging");
+	        objDiv.scrollTop = 99999;
+	    }
 	};
 	var gotFS = function (fileSystem) {
 	    var vm = this;
@@ -2859,7 +2821,7 @@ webpackJsonp([1],[
 /* 317 */,
 /* 318 */,
 /* 319 */
-[823, 192],
+[822, 192],
 /* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -2917,13 +2879,13 @@ webpackJsonp([1],[
 
 /***/ },
 /* 321 */
-[823, 128],
+[822, 128],
 /* 322 */
-[857, 321, 452, 438],
+[856, 321, 452, 438],
 /* 323 */
-[823, 131],
+[822, 131],
 /* 324 */
-[857, 323, 458, 442],
+[856, 323, 458, 442],
 /* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -16473,7 +16435,7 @@ webpackJsonp([1],[
 /* 459 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n<section class=\"todoapp\">\r\n\r\n  <header class=\"header\">\r\n    <!--\r\n    <h1>your to-do's</h1>\r\n    -->\r\n  </header>\r\n\r\n  <section class=\"main\">\r\n\r\n    <!--\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"db_info()\">db_info()</button>\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"countPouchObjects()\">countPouchObjects()</button>\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"findPouchObjects()\">findPouchObjects()</button>\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"findPouchObjectsByAllDocs()\">findPouchObjectsByAllDocs()</button>\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"getPouchObjectsById()\">getPouchObjectsById()</button>\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"addItems()\">addItems()</button>\r\n    <hr/>\r\n    -->\r\n\r\n    <!--\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"scannerOnClicked()\">scannerOnClicked()</button>\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"scannerOffClicked()\">scannerOffClicked()</button>\r\n    <hr/>\r\n    <hr/>\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"softScanOnClicked()\">softScanOnClicked()</button>\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"softScanOffClicked()\">softScanOffClicked()</button>\r\n    <hr/>\r\n    -->\r\n\r\n    <!--\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"openBarcodeScanner()\">openBarcodeScanner() (via camera)</button>\r\n    -->\r\n\r\n\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"importDatabase('kontakt.sql')\">importDatabase('kontakt.sql')</button>\r\n\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"importDatabase('pictures.sql')\">importDatabase('pictures.sql')</button>\r\n\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"importDatabase('complex_dump.sql')\">importDatabase('complex_dump.sql')</button>\r\n\r\n\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"getDatabasePath('onion')\">getDatabasePath('onion')</button>\r\n    \r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"exportDatabase('onion')\">exportDatabase('onion')</button>\r\n    \r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"readFileContent('onion.txt')\">readFileContent('onion.txt')</button>\r\n\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"goSearch('onion.db', {'barcode':'04027301060003'})\">goSearch('onion.db','04027301060003')</button>\r\n\r\n\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"syncFile('http://www.burosch.de/avec.jpg', 'testimage.jpg')\">syncFile('http://www.burosch.de/avec.jpg', 'testimage.jpg')</button>\r\n    <hr/>\r\n    <img [src]=\"imageSource\" style=\"width:100%;\">\r\n    <hr/>\r\n    {{ imageSource }}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n    <!-- WORKING SCAMNMER FUNCTIONS -->\r\n    <!--\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"registerAndScan()\">registerAndScan()</button>\r\n    <input class=\"new-todo\" placeholder=\"What are the items?\" autofocus_disabled [(ngModel)]=\"newItem\" (keyup.enter)=\"addItem()\">\r\n    <button class=\"btn btn-block btn-success btn-lg\" (click)=\"addItem()\">Add item</button>\r\n    -->\r\n    <!-- <div class=\"todo-list\"> -->\r\n    <!--\r\n      <div class=\"row no-gutter\" *ngFor=\"#item of m_dataStore.todos\">\r\n        <div class=\"reshid flip_100 col-sm-12\">\r\n            <div class=\"todo-item height_100_i\" [item]=\"item\" (done)=\"removeItem($event)\" (edit)=\"editItem($event)\">\r\n            </div>\r\n        </div>\r\n      </div>\r\n    -->\r\n    <!-- </div> -->\r\n    <!--\r\n    <hr>/\r\n    {{ todoStatModel.flist | json }}\r\n    <hr>/\r\n    -->\r\n    <!--\r\n    <div class=\"row no-gutter\" *ngFor=\"#fitem of todoStatModel.flist\">\r\n      <div class=\"col-sm-12\">\r\n        <div>\r\n          <p>{{ fitem.task }}</p>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    -->\r\n    <!--\r\n    <div class=\"row no-gutter\" *ngFor=\"#fitem of todoStatModel.flist\">\r\n        <div class=\"reshid flip_100 col-sm-12\">\r\n            <div class=\"todo-item height_100_i\" [item]=\"fitem\">\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <hr/>\r\n    <hr/>\r\n    -->\r\n\r\n\r\n    \r\n\r\n\r\n\r\n    <div id=\"debugging\" style=\"padding-top:200px;font-size:9px;color:#909090;\"><u>Debugging active:</u></div>\r\n\r\n\r\n  </section>\r\n\r\n</section>\r\n\r\n\r\n    <!--\r\n    <hr/>\r\n    <hr/>\r\n    <hr/>\r\n    <hr/>\r\n\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"handleFileAction('read','fremdwaehrung.txt')\">handleFileAction('read','fremdwaehrung.txt')</button>\r\n\r\n\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"writeToFile('example.txt','thisisanexampletext')\">writeToFileFunction('thisisatesttext')</button>\r\n    -->\r\n\r\n    <!--\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"readFromFile()\">readFromFile()</button>\r\n    -->\r\n\r\n    <!--\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"writeFile('fremdwaehrung.txt','blafoopeng')\">writeFile('fremdwaehrung.txt','blafoopeng')</button>\r\n    \r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"handleFileAction('write','blafoopeng','fremdwaehrung.txt')\">handleFileAction('write','blafoopeng','fremdwaehrung.txt')</button>\r\n    \r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"getFileSystem()\">getFileSystem()</button>\r\n    -->\r\n    \r\n    <!--\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"createTable('batch')\">createTable('batch')</button>\r\n    -->\r\n\r\n    <!--\r\n    <div id=\"file_details\">file_details nothing yet...</div>\r\n    <hr/>\r\n\r\n\r\n    <hr/>\r\n    <hr/>\r\n    <div id=\"file_content\">no file_content yet...</div>\r\n    File Content: {{ todoStatModel.file_content }} <br/>\r\n    <hr/>\r\n    <hr/>\r\n\r\n\r\n\r\n    <div id=\"dirContent\">dirContent nothing yet...</div>\r\n    <hr/>\r\n    -->\r\n\r\n\r\n    <!--\r\n    <hr/>\r\n\r\n    {{ todoStatModel.flist | json }}\r\n\r\n    <hr>/\r\n    -->\r\n\r\n\r\n\r\n    <!--\r\n    <hr/>\r\n    <ul id=\"filelist\" > aaa </ul>\r\n    <hr/>\r\n    -->\r\n\r\n    \r\n    <h5>\r\n      todoStatModel.barcode_scanner_info: <br/>\r\n      {{ todoStatModel.barcode_scanner_info | json }} \r\n      <hr/>\r\n      todoStatModel.product_info: <br/>\r\n      {{ todoStatModel.product_info | json }} \r\n    </h5>\r\n    \r\n\r\n    <!--\r\n\r\n    DB Status: {{ todoStatModel.status }} <br/>\r\n\r\n    <hr/>\r\n    <div id=\"tblDiv\">nothing yet...</div>\r\n    <hr/>\r\n\r\n    <h3 style=\"width:100%;text-align:center;\">\r\n      View Quantity: {{ todoStatModel.qty }} <br/>\r\n      Query Duration: {{ todoStatModel.query_duration }} ms\r\n    </h3>\r\n\r\n    <hr/>\r\n\r\n    <h5>\r\n      todoStatModel.db_info: {{ todoStatModel.db_info | json }} \r\n      <hr/>\r\n      todoStatModel.allDocs: {{ todoStatModel.allDocs | json }}\r\n      <hr/>\r\n      todoStatModel.storesizes: {{ todoStatModel.storesizes | json }}\r\n    </h5>\r\n\r\n    <hr/>\r\n    -->\r\n    \r\n"
+	module.exports = "\r\n<section class=\"todoapp\">\r\n\r\n  <header class=\"header\">\r\n    <!--\r\n    <h1>your to-do's</h1>\r\n    -->\r\n  </header>\r\n\r\n  <section class=\"main\">\r\n\r\n    <!--\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"db_info()\">db_info()</button>\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"countPouchObjects()\">countPouchObjects()</button>\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"findPouchObjects()\">findPouchObjects()</button>\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"findPouchObjectsByAllDocs()\">findPouchObjectsByAllDocs()</button>\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"getPouchObjectsById()\">getPouchObjectsById()</button>\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"addItems()\">addItems()</button>\r\n    <hr/>\r\n    -->\r\n\r\n    <!--\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"scannerOnClicked()\">scannerOnClicked()</button>\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"scannerOffClicked()\">scannerOffClicked()</button>\r\n    <hr/>\r\n    <hr/>\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"softScanOnClicked()\">softScanOnClicked()</button>\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"softScanOffClicked()\">softScanOffClicked()</button>\r\n    <hr/>\r\n    -->\r\n\r\n    <!--\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"openBarcodeScanner()\">openBarcodeScanner() (via camera)</button>\r\n    -->\r\n\r\n\r\n    <!--\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"importDatabase('kontakt.sql')\">importDatabase('kontakt.sql')</button>\r\n\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"importDatabase('pictures.sql')\">importDatabase('pictures.sql')</button>\r\n\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"importDatabase('complex_dump.sql')\">importDatabase('complex_dump.sql')</button>\r\n\r\n\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"getDatabasePath('onion')\">getDatabasePath('onion')</button>\r\n    \r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"exportDatabase('onion')\">exportDatabase('onion')</button>\r\n    \r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"readFileContent('onion.txt')\">readFileContent('onion.txt')</button>\r\n    -->\r\n\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"goSearch('batch', {'barcode':'04027301060003'})\">goSearch('batch', {'barcode':'04027301060003'})</button>\r\n\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"goSearch('pictures', {'barcode':'04027301060003'})\">goSearch('pictures', {'barcode':'04027301060003'})</button>\r\n\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"goSearch('cpr.db', {'barcode':'04027301060003'})\">goSearch('cpr.db', {'barcode':'04027301060003'})</button>\r\n\r\n\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"syncFile('http://www.burosch.de/avec.jpg', 'testimage.jpg')\">syncFile('http://www.burosch.de/avec.jpg', 'testimage.jpg')</button>\r\n    <hr/>\r\n    <img [src]=\"imageSource\" style=\"width:100%;\">\r\n    <hr/>\r\n    {{ imageSource }}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n    <!-- WORKING SCAMNMER FUNCTIONS -->\r\n    <!--\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"registerAndScan()\">registerAndScan()</button>\r\n    <input class=\"new-todo\" placeholder=\"What are the items?\" autofocus_disabled [(ngModel)]=\"newItem\" (keyup.enter)=\"addItem()\">\r\n    <button class=\"btn btn-block btn-success btn-lg\" (click)=\"addItem()\">Add item</button>\r\n    -->\r\n    <!-- <div class=\"todo-list\"> -->\r\n    <!--\r\n      <div class=\"row no-gutter\" *ngFor=\"#item of m_dataStore.todos\">\r\n        <div class=\"reshid flip_100 col-sm-12\">\r\n            <div class=\"todo-item height_100_i\" [item]=\"item\" (done)=\"removeItem($event)\" (edit)=\"editItem($event)\">\r\n            </div>\r\n        </div>\r\n      </div>\r\n    -->\r\n    <!-- </div> -->\r\n    <!--\r\n    <hr>/\r\n    {{ todoStatModel.flist | json }}\r\n    <hr>/\r\n    -->\r\n    <!--\r\n    <div class=\"row no-gutter\" *ngFor=\"#fitem of todoStatModel.flist\">\r\n      <div class=\"col-sm-12\">\r\n        <div>\r\n          <p>{{ fitem.task }}</p>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    -->\r\n    <!--\r\n    <div class=\"row no-gutter\" *ngFor=\"#fitem of todoStatModel.flist\">\r\n        <div class=\"reshid flip_100 col-sm-12\">\r\n            <div class=\"todo-item height_100_i\" [item]=\"fitem\">\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <hr/>\r\n    <hr/>\r\n    -->\r\n\r\n\r\n    \r\n\r\n\r\n\r\n    <div id=\"debugging\" style=\"padding-top:200px;font-size:9px;color:#909090;\"><u>Debugging active:</u></div>\r\n\r\n\r\n  </section>\r\n\r\n</section>\r\n\r\n\r\n    <!--\r\n    <hr/>\r\n    <hr/>\r\n    <hr/>\r\n    <hr/>\r\n\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"handleFileAction('read','fremdwaehrung.txt')\">handleFileAction('read','fremdwaehrung.txt')</button>\r\n\r\n\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"writeToFile('example.txt','thisisanexampletext')\">writeToFileFunction('thisisatesttext')</button>\r\n    -->\r\n\r\n    <!--\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"readFromFile()\">readFromFile()</button>\r\n    -->\r\n\r\n    <!--\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"writeFile('fremdwaehrung.txt','blafoopeng')\">writeFile('fremdwaehrung.txt','blafoopeng')</button>\r\n    \r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"handleFileAction('write','blafoopeng','fremdwaehrung.txt')\">handleFileAction('write','blafoopeng','fremdwaehrung.txt')</button>\r\n    \r\n    <hr/>\r\n    <button class=\"btn btn-block btn-info btn-lg\" (click)=\"getFileSystem()\">getFileSystem()</button>\r\n    -->\r\n    \r\n    <!--\r\n    <hr/>\r\n    <button class=\"btn btn-block btn-danger btn-lg\" (click)=\"createTable('batch')\">createTable('batch')</button>\r\n    -->\r\n\r\n    <!--\r\n    <div id=\"file_details\">file_details nothing yet...</div>\r\n    <hr/>\r\n\r\n\r\n    <hr/>\r\n    <hr/>\r\n    <div id=\"file_content\">no file_content yet...</div>\r\n    File Content: {{ todoStatModel.file_content }} <br/>\r\n    <hr/>\r\n    <hr/>\r\n\r\n\r\n\r\n    <div id=\"dirContent\">dirContent nothing yet...</div>\r\n    <hr/>\r\n    -->\r\n\r\n\r\n    <!--\r\n    <hr/>\r\n\r\n    {{ todoStatModel.flist | json }}\r\n\r\n    <hr>/\r\n    -->\r\n\r\n\r\n\r\n    <!--\r\n    <hr/>\r\n    <ul id=\"filelist\" > aaa </ul>\r\n    <hr/>\r\n    -->\r\n\r\n    \r\n    <h5>\r\n      todoStatModel.barcode_scanner_info: <br/>\r\n      {{ todoStatModel.barcode_scanner_info | json }} \r\n      <hr/>\r\n      todoStatModel.product_info: <br/>\r\n      {{ todoStatModel.product_info | json }} \r\n    </h5>\r\n    \r\n\r\n    <!--\r\n\r\n    DB Status: {{ todoStatModel.status }} <br/>\r\n\r\n    <hr/>\r\n    <div id=\"tblDiv\">nothing yet...</div>\r\n    <hr/>\r\n\r\n    <h3 style=\"width:100%;text-align:center;\">\r\n      View Quantity: {{ todoStatModel.qty }} <br/>\r\n      Query Duration: {{ todoStatModel.query_duration }} ms\r\n    </h3>\r\n\r\n    <hr/>\r\n\r\n    <h5>\r\n      todoStatModel.db_info: {{ todoStatModel.db_info | json }} \r\n      <hr/>\r\n      todoStatModel.allDocs: {{ todoStatModel.allDocs | json }}\r\n      <hr/>\r\n      todoStatModel.storesizes: {{ todoStatModel.storesizes | json }}\r\n    </h5>\r\n\r\n    <hr/>\r\n    -->\r\n    \r\n"
 
 /***/ },
 /* 460 */
@@ -17526,7 +17488,7 @@ webpackJsonp([1],[
 
 /***/ },
 /* 671 */
-[825, 84],
+[824, 84],
 /* 672 */
 [827, 84],
 /* 673 */
@@ -17968,7 +17930,7 @@ webpackJsonp([1],[
 
 /***/ },
 /* 686 */
-[837, 194, 684, 685, 124],
+[836, 194, 684, 685, 124],
 /* 687 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -18024,7 +17986,7 @@ webpackJsonp([1],[
 
 /***/ },
 /* 688 */
-[838, 193, 125, 687, 683, 681, 124],
+[839, 193, 125, 687, 683, 681, 124],
 /* 689 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -18104,15 +18066,15 @@ webpackJsonp([1],[
 
 /***/ },
 /* 691 */
-[841, 193],
+[840, 193],
 /* 692 */
 [842, 194],
 /* 693 */
-[845, 125],
+[844, 125],
 /* 694 */
 [847, 125, 693],
 /* 695 */
-[849, 195],
+[848, 195],
 /* 696 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -18224,7 +18186,7 @@ webpackJsonp([1],[
 /* 701 */
 681,
 /* 702 */
-[853, 198, 710, 709, 126, 449],
+[852, 198, 710, 709, 126, 449],
 /* 703 */
 683,
 /* 704 */
@@ -18232,25 +18194,25 @@ webpackJsonp([1],[
 /* 705 */
 685,
 /* 706 */
-[837, 197, 704, 705, 126],
+[836, 197, 704, 705, 126],
 /* 707 */
 687,
 /* 708 */
-[838, 196, 127, 707, 703, 701, 126],
+[839, 196, 127, 707, 703, 701, 126],
 /* 709 */
 689,
 /* 710 */
 690,
 /* 711 */
-[841, 196],
+[840, 196],
 /* 712 */
 [842, 197],
 /* 713 */
-[845, 127],
+[844, 127],
 /* 714 */
 [847, 127, 713],
 /* 715 */
-[849, 198],
+[848, 198],
 /* 716 */
 668,
 /* 717 */
@@ -18258,7 +18220,7 @@ webpackJsonp([1],[
 /* 718 */
 670,
 /* 719 */
-[825, 85],
+[824, 85],
 /* 720 */
 [827, 85],
 /* 721 */
@@ -19167,7 +19129,7 @@ webpackJsonp([1],[
 /* 736 */
 681,
 /* 737 */
-[853, 201, 745, 744, 129, 455],
+[852, 201, 745, 744, 129, 455],
 /* 738 */
 683,
 /* 739 */
@@ -19175,25 +19137,25 @@ webpackJsonp([1],[
 /* 740 */
 685,
 /* 741 */
-[837, 200, 739, 740, 129],
+[836, 200, 739, 740, 129],
 /* 742 */
 687,
 /* 743 */
-[838, 199, 130, 742, 738, 736, 129],
+[839, 199, 130, 742, 738, 736, 129],
 /* 744 */
 689,
 /* 745 */
 690,
 /* 746 */
-[841, 199],
+[840, 199],
 /* 747 */
 [842, 200],
 /* 748 */
-[845, 130],
+[844, 130],
 /* 749 */
 [847, 130, 748],
 /* 750 */
-[849, 201],
+[848, 201],
 /* 751 */
 668,
 /* 752 */
@@ -19201,7 +19163,7 @@ webpackJsonp([1],[
 /* 753 */
 670,
 /* 754 */
-[825, 86],
+[824, 86],
 /* 755 */
 [827, 86],
 /* 756 */
@@ -19433,19 +19395,60 @@ webpackJsonp([1],[
 	            reader.send();
 	        }, vm.logerr);
 	    };
-	    TodoList.prototype.getProductByBarcode = function (tx, valueObject, cbFunctionSuccess, cbFunctionError) {
+	    TodoList.prototype.getProductByBarcode = function (tx, req, valueObject, cbFunctionSuccess, cbFunctionError) {
 	        var vm = this;
-	        console.log("getProductByBarcode(tx, valueObject, cbFunctionSuccess, cbFunctionError) { ... ");
-	        tx.executeSql("SELECT batch_gtin FROM batch WHERE 1 AND batch_gtin LIKE ('%" + valueObject.barcode + "%') LIMIT 1", [], cbFunctionSuccess, cbFunctionError);
+	        console.log("getProductByBarcode(tx, req, valueObject, cbFunctionSuccess, cbFunctionError) { ... ");
+	        function reduce(param) {
+	            var clause = [], params = [], nest, nestType;
+	            if (param.clause !== undefined && param.params) {
+	                return param;
+	            }
+	            if (param.clause !== undefined && param.param !== undefined) {
+	                return { clause: param.clause, params: [param.param] };
+	            }
+	            if (param.clause) {
+	                return { clause: param.clause, params: [] };
+	            }
+	            if (param.and) {
+	                nest = param.and;
+	                nestType = ' AND ';
+	            }
+	            else if (param.or) {
+	                nest = param.or;
+	                nestType = ' OR ';
+	            }
+	            else {
+	                throw new Error('Invalid dynamic parameter found');
+	            }
+	            nest.forEach(function (p) {
+	                p = reduce(p);
+	                clause.push(p.clause);
+	                params.push.apply(params, p.params);
+	            });
+	            return {
+	                clause: '(' + clause.join(nestType) + ')',
+	                params: params
+	            };
+	        }
+	        function executeDynamicSql(tx, base, dynamicparameter, onSuccessFunction, onErrorFunction) {
+	            var reduction = reduce(dynamicparameter);
+	            tx.executeSql(base + reduction.clause, reduction.params, onSuccessFunction, onErrorFunction);
+	        }
+	        if (req == 'batch')
+	            tx.executeSql("SELECT batch_gtin FROM batch WHERE 1 AND batch_gtin = '" + valueObject.barcode + "' LIMIT 1", [], cbFunctionSuccess, cbFunctionError);
+	        if (req == 'pictures')
+	            tx.executeSql("SELECT pic_id FROM pictures WHERE 1 LIMIT 1", [], cbFunctionSuccess, cbFunctionError);
+	        if (req == 'cpr')
+	            tx.executeSql("SELECT prod_num FROM onion.customer_product_relationship INNER JOIN onion.produkt ON cpr_prod_id = prod_id AND prod_status_lifecycle NOT IN('RIP', 'BAD', 'TBA', 'DEV') INNER JOIN onion.batch ON batch_prod_id = prod_id AND batch_status = 'master' INNER JOIN onion.brand ON br_id = prod_br_id INNER JOIN onion.kunde ON cpr_kund_id = kund_id AND kund_status = 'active' AND IFNULL(kund_vertreter, '') != '' AND (kund_id = 2321) INNER JOIN onion.product_pricelist ON ppl_prod_id = prod_id AND ppl_pl_id = kund_preisliste LEFT JOIN onion.product_pricelist_promotion ON (ppl_id = pplp_ppl_id AND (pplp_status = 'active' OR pplp_status = 'pending')) LEFT JOIN onion.relation_product_inventory ON prodinv_prod_id = prod_id AND prodinv_inv_id = 1 LEFT JOIN onion.customer_visit ON cuvis_cust_id = kund_id AND (cuvis_status IN('draft', 'confirmed') AND (cuvis_usr_id = 'MUR' OR cuvis_usr_id IS NULL) AND (cuvis_id = 'MUR2016030715263933657' AND cuvis_cust_id = 2321)) LEFT JOIN onion.customer_visit_line ON (cuvisl_cuvis_id = cuvis_id AND cuvisl_prod_id = prod_id) WHERE 1 AND ((product_pricelist_promotion.pplp_id = customer_visit_line.cuvisl_pplp_id) OR (ISNULL(customer_visit_line.cuvisl_pplp_id))) GROUP BY `prod_id` ORDER BY pplp_status ASC, cpr_department_name, cpr_main_commodity_group_name, cpr_commodity_group_name, ppl_current_standard_price, br_name, prod_num LIMIT 0, 1", [], cbFunctionSuccess, cbFunctionError);
 	    };
-	    TodoList.prototype.goSearch = function (dbname, valueObject) {
+	    TodoList.prototype.goSearch = function (req, valueObject) {
 	        var vm = this;
-	        vm.logmsg("goSearch(dbname, valueObject) { ... ");
-	        var db = window.sqlitePlugin.openDatabase("onion.db");
+	        vm.logmsg("goSearch(valueObject) { ... ");
+	        var db = window.sqlitePlugin.openDatabase({ name: "onion.db", location: 0 });
 	        vm.logmsg("db:");
 	        vm.logerr(db);
 	        db.transaction(function (tx) {
-	            vm.getProductByBarcode(tx, valueObject, function (tx, responseSuccess) {
+	            vm.getProductByBarcode(tx, req, valueObject, function (tx, responseSuccess) {
 	                vm.logmsg("tx");
 	                vm.logmsg(JSON.stringify(tx));
 	                vm.logmsg("responseSuccess");
@@ -19455,6 +19458,9 @@ webpackJsonp([1],[
 	                    var len = responseSuccess.rows.length;
 	                    for (var i = 0; i < len; i++) {
 	                        vm.todoStatModel.product_info = responseSuccess.rows.item(i);
+	                        var item = {
+	                            "task": responseSuccess.rows.item(i).batch_gtin
+	                        };
 	                    }
 	                });
 	            }, function (tx, responseError) {
