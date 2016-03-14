@@ -2,7 +2,7 @@ webpackJsonp([1],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(jQuery, _) {var __extends = (this && this.__extends) || function (d, b) {
+	/* WEBPACK VAR INJECTION */(function(jQuery) {var __extends = (this && this.__extends) || function (d, b) {
 	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -38,8 +38,8 @@ webpackJsonp([1],[
 	var router_2 = __webpack_require__(16);
 	var Observable_1 = __webpack_require__(3);
 	__webpack_require__(28);
-	__webpack_require__(45);
 	__webpack_require__(44);
+	__webpack_require__(43);
 	var Welcome = (function () {
 	    function Welcome(params) {
 	        this.someId = 'App1' + Math.random();
@@ -216,7 +216,7 @@ webpackJsonp([1],[
 	    }
 	];
 	var startUp = function () {
-	    var waitForStartup = 3000;
+	    var waitForStartup = 5000;
 	    logmsg("var startUp = function() { ... ");
 	    logmsg("starting up in " + waitForStartup + " seconds...");
 	    setTimeout(function () {
@@ -240,6 +240,7 @@ webpackJsonp([1],[
 	        }
 	        function copyerror(result) {
 	            logerr(result);
+	            startUp();
 	        }
 	        window.plugins.sqlDB.copy("onion.db", 0, copysuccess, copyerror);
 	        if (false) {
@@ -266,45 +267,6 @@ webpackJsonp([1],[
 	    }
 	    catch (err) {
 	        logmsg("Error 2222rdhig98reugj");
-	        logmsg(err);
-	    }
-	};
-	var row_max = _.size(tableObjectArray);
-	var doLoop = function (row) {
-	    var v = tableObjectArray[row];
-	    logmsg("importing " + (v.table_name));
-	    try {
-	        var db = window.sqlitePlugin.openDatabase({ name: (v.table_name) + ".db", location: 2, createFromLocation: 1 });
-	        db.transaction(function (tx) {
-	            tx.executeSql("select count(" + (v.unique_key) + ") as cnt from " + (v.table_name) + ";", [], function (tx, res) {
-	                logmsg("found in " + (v.table_name) + ": " + res.rows.item(0).cnt);
-	                if (row >= _.size(tableObjectArray))
-	                    startUp();
-	                else {
-	                    row++;
-	                    doLoop(row);
-	                }
-	            }, function (err) {
-	                logmsg(JSON.stringify(err));
-	                if (row >= _.size(tableObjectArray))
-	                    startUp();
-	                else {
-	                    row++;
-	                    doLoop(row);
-	                }
-	            });
-	        }, function (err) {
-	            logmsg(JSON.stringify(err));
-	            if (row >= _.size(tableObjectArray))
-	                startUp();
-	            else {
-	                row++;
-	                doLoop(row);
-	            }
-	        });
-	    }
-	    catch (err) {
-	        console.log(err);
 	        logmsg(err);
 	    }
 	};
@@ -389,7 +351,7 @@ webpackJsonp([1],[
 	    onDeviceReady(false);
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(39)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
 
 /***/ },
 /* 1 */,
@@ -411,7 +373,7 @@ webpackJsonp([1],[
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	__webpack_require__(45);
+	__webpack_require__(44);
 	__webpack_require__(21);
 	__webpack_require__(182);
 	__webpack_require__(82);
@@ -1171,7 +1133,7 @@ webpackJsonp([1],[
 	})(angular2_redux_util_1.Actions);
 	exports.PartActions = PartActions;
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(47)))
 
 /***/ },
 /* 126 */
@@ -1244,7 +1206,7 @@ webpackJsonp([1],[
 	var CommBroker_1 = __webpack_require__(7);
 	__webpack_require__(111);
 	__webpack_require__(21);
-	__webpack_require__(45);
+	__webpack_require__(44);
 	__webpack_require__(24);
 	var DIGG_INIT_HEIGHT = '400px';
 	var Digg = (function () {
@@ -2821,7 +2783,7 @@ webpackJsonp([1],[
 /* 317 */,
 /* 318 */,
 /* 319 */
-[835, 192],
+[823, 192],
 /* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -2879,13 +2841,13 @@ webpackJsonp([1],[
 
 /***/ },
 /* 321 */
-[835, 128],
+[823, 128],
 /* 322 */
-[869, 321, 452, 438],
+[857, 321, 452, 438],
 /* 323 */
-[835, 131],
+[823, 131],
 /* 324 */
-[869, 323, 458, 442],
+[857, 323, 458, 442],
 /* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -16031,7 +15993,7 @@ webpackJsonp([1],[
 	  }
 	}.call(this));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(327)(module), (function() { return this; }()), __webpack_require__(39)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(327)(module), (function() { return this; }()), __webpack_require__(47)))
 
 /***/ },
 /* 431 */
@@ -17043,7 +17005,7 @@ webpackJsonp([1],[
 
 /***/ },
 /* 660 */
-[831, 661],
+[818, 661],
 /* 661 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -17142,7 +17104,7 @@ webpackJsonp([1],[
 
 /***/ },
 /* 664 */
-[833, 192, 432],
+[821, 192, 432],
 /* 665 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -17488,15 +17450,15 @@ webpackJsonp([1],[
 
 /***/ },
 /* 671 */
-[836, 84],
+[825, 84],
 /* 672 */
-[839, 84],
+[827, 84],
 /* 673 */
-[840, 84],
+[828, 84],
 /* 674 */
-[842, 84],
+[831, 84],
 /* 675 */
-[844, 670],
+[832, 670],
 /* 676 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -17553,7 +17515,7 @@ webpackJsonp([1],[
 
 /***/ },
 /* 677 */
-[846, 678, 676],
+[835, 678, 676],
 /* 678 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -17570,8 +17532,8 @@ webpackJsonp([1],[
 	var http_1 = __webpack_require__(17);
 	var Observable_1 = __webpack_require__(3);
 	__webpack_require__(21);
-	__webpack_require__(43);
-	__webpack_require__(43);
+	__webpack_require__(42);
+	__webpack_require__(42);
 	var WeatherService = (function () {
 	    function WeatherService(http) {
 	        this.http = http;
@@ -17930,7 +17892,7 @@ webpackJsonp([1],[
 
 /***/ },
 /* 686 */
-[849, 194, 684, 685, 124],
+[836, 194, 684, 685, 124],
 /* 687 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -17986,7 +17948,7 @@ webpackJsonp([1],[
 
 /***/ },
 /* 688 */
-[851, 193, 125, 687, 683, 681, 124],
+[839, 193, 125, 687, 683, 681, 124],
 /* 689 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -18066,15 +18028,15 @@ webpackJsonp([1],[
 
 /***/ },
 /* 691 */
-[852, 193],
+[841, 193],
 /* 692 */
-[854, 194],
+[842, 194],
 /* 693 */
-[856, 125],
+[845, 125],
 /* 694 */
-[859, 125, 693],
+[847, 125, 693],
 /* 695 */
-[861, 195],
+[849, 195],
 /* 696 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -18178,15 +18140,15 @@ webpackJsonp([1],[
 /* 697 */
 667,
 /* 698 */
-[831, 699],
+[818, 699],
 /* 699 */
 661,
 /* 700 */
-[863, 714, 711, 712, 715, 708, 127, 196, 126, 702, 706, 198, 197, 450],
+[850, 714, 711, 712, 715, 708, 127, 196, 126, 702, 706, 198, 197, 450],
 /* 701 */
 681,
 /* 702 */
-[865, 198, 710, 709, 126, 449],
+[852, 198, 710, 709, 126, 449],
 /* 703 */
 683,
 /* 704 */
@@ -18194,47 +18156,47 @@ webpackJsonp([1],[
 /* 705 */
 685,
 /* 706 */
-[849, 197, 704, 705, 126],
+[836, 197, 704, 705, 126],
 /* 707 */
 687,
 /* 708 */
-[851, 196, 127, 707, 703, 701, 126],
+[839, 196, 127, 707, 703, 701, 126],
 /* 709 */
 689,
 /* 710 */
 690,
 /* 711 */
-[852, 196],
+[841, 196],
 /* 712 */
-[854, 197],
+[842, 197],
 /* 713 */
-[856, 127],
+[845, 127],
 /* 714 */
-[859, 127, 713],
+[847, 127, 713],
 /* 715 */
-[861, 198],
+[849, 198],
 /* 716 */
 668,
 /* 717 */
-[867, 85, 436, 451],
+[854, 85, 436, 451],
 /* 718 */
 670,
 /* 719 */
-[836, 85],
+[825, 85],
 /* 720 */
-[839, 85],
+[827, 85],
 /* 721 */
-[840, 85],
+[828, 85],
 /* 722 */
-[842, 85],
+[831, 85],
 /* 723 */
-[844, 718],
+[832, 718],
 /* 724 */
 662,
 /* 725 */
 663,
 /* 726 */
-[833, 128, 437],
+[821, 128, 437],
 /* 727 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -19010,13 +18972,13 @@ webpackJsonp([1],[
 	})();
 	exports.TodoList = TodoList;
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(47)))
 
 /***/ },
 /* 728 */
 676,
 /* 729 */
-[846, 730, 728],
+[835, 730, 728],
 /* 730 */
 678,
 /* 731 */
@@ -19121,15 +19083,15 @@ webpackJsonp([1],[
 /* 732 */
 667,
 /* 733 */
-[831, 734],
+[818, 734],
 /* 734 */
 661,
 /* 735 */
-[863, 749, 746, 747, 750, 743, 130, 199, 129, 737, 741, 201, 200, 456],
+[850, 749, 746, 747, 750, 743, 130, 199, 129, 737, 741, 201, 200, 456],
 /* 736 */
 681,
 /* 737 */
-[865, 201, 745, 744, 129, 455],
+[852, 201, 745, 744, 129, 455],
 /* 738 */
 683,
 /* 739 */
@@ -19137,47 +19099,47 @@ webpackJsonp([1],[
 /* 740 */
 685,
 /* 741 */
-[849, 200, 739, 740, 129],
+[836, 200, 739, 740, 129],
 /* 742 */
 687,
 /* 743 */
-[851, 199, 130, 742, 738, 736, 129],
+[839, 199, 130, 742, 738, 736, 129],
 /* 744 */
 689,
 /* 745 */
 690,
 /* 746 */
-[852, 199],
+[841, 199],
 /* 747 */
-[854, 200],
+[842, 200],
 /* 748 */
-[856, 130],
+[845, 130],
 /* 749 */
-[859, 130, 748],
+[847, 130, 748],
 /* 750 */
-[861, 201],
+[849, 201],
 /* 751 */
 668,
 /* 752 */
-[867, 86, 440, 457],
+[854, 86, 440, 457],
 /* 753 */
 670,
 /* 754 */
-[836, 86],
+[825, 86],
 /* 755 */
-[839, 86],
+[827, 86],
 /* 756 */
-[840, 86],
+[828, 86],
 /* 757 */
-[842, 86],
+[831, 86],
 /* 758 */
-[844, 753],
+[832, 753],
 /* 759 */
 662,
 /* 760 */
 663,
 /* 761 */
-[833, 131, 441],
+[821, 131, 441],
 /* 762 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -19489,13 +19451,13 @@ webpackJsonp([1],[
 	})();
 	exports.TodoList = TodoList;
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(47)))
 
 /***/ },
 /* 763 */
 676,
 /* 764 */
-[846, 765, 763],
+[835, 765, 763],
 /* 765 */
 678,
 /* 766 */
@@ -19670,7 +19632,7 @@ webpackJsonp([1],[
 	var router_1 = __webpack_require__(16);
 	var router_2 = __webpack_require__(16);
 	__webpack_require__(111);
-	__webpack_require__(44);
+	__webpack_require__(43);
 	__webpack_require__(292);
 	__webpack_require__(181);
 	__webpack_require__(293);
@@ -19736,7 +19698,7 @@ webpackJsonp([1],[
 	var Conts_1 = __webpack_require__(11);
 	var router_3 = __webpack_require__(16);
 	__webpack_require__(111);
-	__webpack_require__(44);
+	__webpack_require__(43);
 	__webpack_require__(28);
 	__webpack_require__(181);
 	__webpack_require__(182);
@@ -19893,7 +19855,7 @@ webpackJsonp([1],[
 	};
 	var core_1 = __webpack_require__(1);
 	var Observable_1 = __webpack_require__(3);
-	__webpack_require__(44);
+	__webpack_require__(43);
 	__webpack_require__(81);
 	__webpack_require__(21);
 	__webpack_require__(113);
@@ -20018,19 +19980,7 @@ webpackJsonp([1],[
 /* 815 */,
 /* 816 */,
 /* 817 */,
-/* 818 */,
-/* 819 */,
-/* 820 */,
-/* 821 */,
-/* 822 */,
-/* 823 */,
-/* 824 */,
-/* 825 */,
-/* 826 */,
-/* 827 */,
-/* 828 */,
-/* 829 */,
-/* 830 */
+/* 818 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
 	var __extends = (this && this.__extends) || function (d, b) {
@@ -20068,6 +20018,678 @@ webpackJsonp([1],[
 	    return Help;
 	})(RefreshTheme_1.RefreshTheme);
 	exports.Help = Help;
+
+
+/***/ },
+/* 819 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var contributors_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var RefreshTheme_1 = __webpack_require__(36);
+	var ng2_bootstrap_1 = __webpack_require__(122);
+	var Help = (function (_super) {
+	    __extends(Help, _super);
+	    function Help(contributors) {
+	        _super.call(this);
+	    }
+	    Help = __decorate([
+	        core_1.Component({
+	            selector: 'Help',
+	            providers: [contributors_1.Contributors],
+	            directives: [ng2_bootstrap_1.Alert, ng2_bootstrap_1.Rating],
+	            template: " <small>I am Help component and using <a href=\"https://github.com/valor-software/ng2-bootstrap\" target=\"_blank\">ng2-bootstrap</a></small>\n                <br/>\n                <alert type=\"info\">Welcome to Angular2 Bootstrap starter pack!</alert>\n                <rating [(ngModel)]=\"rate\" [max]=\"max\" [readonly]=\"isReadonly\" [titles]=\"['one','two','three']\" ></rating>\n                <ng-content></ng-content>\n                "
+	        }), 
+	        __metadata('design:paramtypes', [contributors_1.Contributors])
+	    ], Help);
+	    return Help;
+	})(RefreshTheme_1.RefreshTheme);
+	exports.Help = Help;
+
+
+/***/ },
+/* 820 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__) {
+
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var Sliderpanel_1 = __webpack_require__(15);
+	var TodoStatsModel_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var Todo2 = (function () {
+	    function Todo2(sliderPanel, todoStatModel) {
+	        this.todoStatModel = todoStatModel;
+	        this.sliderPanel = sliderPanel;
+	    }
+	    Todo2.prototype.onPrev = function (event) {
+	        this.sliderPanel.slideToPage('todo1', 'right');
+	    };
+	    Todo2 = __decorate([
+	        core_1.Component({
+	            selector: 'Todo2',
+	            styles: [__webpack_require__(__webpack_module_template_argument_1__)],
+	            template: " <button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left \"></span>\n                    </button>\n                    <small>I am todo2 component</small>\n                    <ng-content></ng-content>\n                    <div class=\"container\">\n                        <div class=\"row\">\n\n                            <div class=\"col-md-12\">\n                              <div class=\"update-nag\">\n                                <div class=\"update-split\"><i class=\"fa fa-refresh\"></i></div>\n                                <div class=\"update-text\">Total To-Do updates from server: {{todoStatModel.updates}}</div>\n                              </div>\n                            </div>\n\n                            <div class=\"col-md-12\">\n                              <div class=\"update-nag\">\n                                <div class=\"update-split update-info\"><i class=\"fa fa-folder-open\"></i></div>\n                                <div class=\"update-text\">Total To-Do reads from server: {{todoStatModel.reads}}</div>\n                              </div>\n                            </div>\n\n                            <div class=\"col-md-12\">\n                              <div class=\"update-nag\">\n                                <div class=\"update-split update-success\"><i class=\"fa fa-leaf\"></i></div>\n                                <div class=\"update-text\">Total To-Do creates from server: {{todoStatModel.creates}}</div>\n                              </div>\n                            </div>\n\n                            <div class=\"col-md-12\">\n                              <div class=\"update-nag\">\n                                <div class=\"update-split update-danger\"><i class=\"fa fa-warning-sign\"></i></div>\n                                <div class=\"update-text\">Total To-Do deletes from server: {{todoStatModel.deletes}}</div>\n                              </div>\n                            </div>\n\n                        </div>\n                    </div>\n                    "
+	        }), 
+	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, TodoStatsModel_1.default])
+	    ], Todo2);
+	    return Todo2;
+	})();
+	exports.Todo2 = Todo2;
+
+
+/***/ },
+/* 821 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__) {
+
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var Sliderpanel_1 = __webpack_require__(15);
+	var TodoStatsModel_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var Todo2 = (function () {
+	    function Todo2(sliderPanel, todoStatModel) {
+	        this.todoStatModel = todoStatModel;
+	        this.sliderPanel = sliderPanel;
+	    }
+	    Todo2.prototype.onPrev = function (event) {
+	        this.sliderPanel.slideToPage('todo1', 'right');
+	    };
+	    Todo2 = __decorate([
+	        core_1.Component({
+	            selector: 'Todo2',
+	            styles: [__webpack_require__(__webpack_module_template_argument_1__)],
+	            template: " <button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left \"></span>\n                    </button>\n                    <small>I am todo2 component</small>\n                    <ng-content></ng-content>\n                    <div class=\"container\">\n                        <div class=\"row\">\n\n                            <div class=\"col-md-12\">\n                              <div class=\"update-nag\">\n                                <div class=\"update-split\"><i class=\"fa fa-refresh\"></i></div>\n                                <div class=\"update-text\">Total To-Do updates from server: {{todoStatModel.updates}}</div>\n                              </div>\n                            </div>\n\n                            <div class=\"col-md-12\">\n                              <div class=\"update-nag\">\n                                <div class=\"update-split update-info\"><i class=\"fa fa-folder-open\"></i></div>\n                                <div class=\"update-text\">Total To-Do reads from server: {{todoStatModel.reads}}</div>\n                              </div>\n                            </div>\n\n                            <div class=\"col-md-12\">\n                              <div class=\"update-nag\">\n                                <div class=\"update-split update-success\"><i class=\"fa fa-leaf\"></i></div>\n                                <div class=\"update-text\">Total To-Do creates from server: {{todoStatModel.creates}}</div>\n                              </div>\n                            </div>\n\n                            <div class=\"col-md-12\">\n                              <div class=\"update-nag\">\n                                <div class=\"update-split update-danger\"><i class=\"fa fa-warning-sign\"></i></div>\n                                <div class=\"update-text\">Total To-Do deletes from server: {{todoStatModel.deletes}}</div>\n                              </div>\n                            </div>\n\n                        </div>\n                    </div>\n                    "
+	        }), 
+	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, TodoStatsModel_1.default])
+	    ], Todo2);
+	    return Todo2;
+	})();
+	exports.Todo2 = Todo2;
+
+
+/***/ },
+/* 822 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var http_1 = __webpack_require__(17);
+	var Lib_1 = __webpack_require__(123);
+	__webpack_require__(82);
+	var TodoStatsModel_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var url = 'http://secure.digitalsignage.com';
+	var TodoItemModel = (function () {
+	    function TodoItemModel(text, id) {
+	        this.task = text;
+	        this.id = id || Lib_1.Lib.guid();
+	    }
+	    Object.defineProperty(TodoItemModel.prototype, "text", {
+	        get: function () {
+	            console.log('getting value for task', this.task);
+	            return this.task;
+	        },
+	        set: function (value) {
+	            this.task = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    TodoItemModel.prototype.getTask = function () {
+	        return this.task;
+	    };
+	    return TodoItemModel;
+	})();
+	exports.TodoItemModel = TodoItemModel;
+	var TodosService = (function () {
+	    function TodosService(_http, todoStatsModel) {
+	        this._http = _http;
+	        this.todoStatsModel = todoStatsModel;
+	        var self = this;
+	        this.m_dataStore = { todos: [] };
+	        this.loadTodos();
+	    }
+	    TodosService.prototype.addItem = function (newItem) {
+	        var todo = new TodoItemModel(newItem);
+	        this.m_dataStore.todos.push(todo);
+	        this.createTodo(todo);
+	    };
+	    TodosService.prototype.removeItem = function (item) {
+	        var index = this.m_dataStore.todos.indexOf(item);
+	        this.m_dataStore.todos.splice(index, 1);
+	        this.deleteTodo(item);
+	    };
+	    TodosService.prototype.editItem = function (item) {
+	        var index = this.m_dataStore.todos.indexOf(item);
+	        this.m_dataStore.todos[index].text = item.getTask();
+	        this.updateTodo(item);
+	    };
+	    TodosService.prototype.getDataStore = function () {
+	        return this.m_dataStore;
+	    };
+	    TodosService.prototype.loadTodos = function () {
+	        var self = this;
+	        this.todoStatsModel.reads++;
+	        var channel = this._http.get(url + "/todos").map(function (response) { return response.json(); }).subscribe(function (data) {
+	            try {
+	                data = JSON.parse(data);
+	            }
+	            catch (e) {
+	                channel.unsubscribe();
+	                return;
+	            }
+	            for (var i in data) {
+	                var todoItem = new TodoItemModel(data[i].task, data[i].id);
+	                self.m_dataStore.todos.push(todoItem);
+	            }
+	            channel.unsubscribe();
+	        }, function (error) { return console.log("Could not load todos " + error); });
+	    };
+	    TodosService.prototype.createTodo = function (todo) {
+	        this.todoStatsModel.creates++;
+	        var sendData = JSON.stringify(todo);
+	        var channel = this._http.post(url + "/todos", sendData)
+	            .map(function (response) { return response.json(); }).subscribe(function (sendData) {
+	            channel.unsubscribe();
+	        }, function (error) { return console.log('Could not create todo.'); });
+	    };
+	    TodosService.prototype.updateTodo = function (todo) {
+	        this.todoStatsModel.updates++;
+	        var channel = this._http.put(url + "/todos/" + todo.id, JSON.stringify(todo))
+	            .map(function (response) { return response.json(); }).subscribe(function (data) {
+	            channel.unsubscribe();
+	        }, function (error) { return console.log('Could not update todo.'); });
+	    };
+	    TodosService.prototype.deleteTodo = function (todo) {
+	        var _this = this;
+	        this.todoStatsModel.deletes++;
+	        var channel = this._http.delete(url + "/todos/" + todo.id).subscribe(function (response) {
+	            _this.m_dataStore.todos.forEach(function (t, index) {
+	                if (t.id === todo.id) {
+	                    _this.m_dataStore.todos.splice(index, 1);
+	                }
+	            });
+	            channel.unsubscribe();
+	        }, function (error) { return console.log('Could not delete todo.'); });
+	    };
+	    TodosService = __decorate([
+	        core_1.Injectable(), 
+	        __metadata('design:paramtypes', [http_1.Http, TodoStatsModel_1.default])
+	    ], TodosService);
+	    return TodosService;
+	})();
+	exports.TodosService = TodosService;
+
+
+/***/ },
+/* 823 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var http_1 = __webpack_require__(17);
+	var Lib_1 = __webpack_require__(123);
+	__webpack_require__(82);
+	var TodoStatsModel_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var url = 'http://secure.digitalsignage.com';
+	var TodoItemModel = (function () {
+	    function TodoItemModel(text, id) {
+	        this.task = text;
+	        this.id = id || Lib_1.Lib.guid();
+	    }
+	    Object.defineProperty(TodoItemModel.prototype, "text", {
+	        get: function () {
+	            console.log('getting value for task', this.task);
+	            return this.task;
+	        },
+	        set: function (value) {
+	            this.task = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    TodoItemModel.prototype.getTask = function () {
+	        return this.task;
+	    };
+	    return TodoItemModel;
+	})();
+	exports.TodoItemModel = TodoItemModel;
+	var TodosService = (function () {
+	    function TodosService(_http, todoStatsModel) {
+	        this._http = _http;
+	        this.todoStatsModel = todoStatsModel;
+	        var self = this;
+	        this.m_dataStore = { todos: [] };
+	        this.loadTodos();
+	    }
+	    TodosService.prototype.addItem = function (newItem) {
+	        var todo = new TodoItemModel(newItem);
+	        this.m_dataStore.todos.push(todo);
+	        this.createTodo(todo);
+	    };
+	    TodosService.prototype.removeItem = function (item) {
+	        var index = this.m_dataStore.todos.indexOf(item);
+	        this.m_dataStore.todos.splice(index, 1);
+	        this.deleteTodo(item);
+	    };
+	    TodosService.prototype.editItem = function (item) {
+	        var index = this.m_dataStore.todos.indexOf(item);
+	        this.m_dataStore.todos[index].text = item.getTask();
+	        this.updateTodo(item);
+	    };
+	    TodosService.prototype.getDataStore = function () {
+	        return this.m_dataStore;
+	    };
+	    TodosService.prototype.loadTodos = function () {
+	        var self = this;
+	        this.todoStatsModel.reads++;
+	        var channel = this._http.get(url + "/todos").map(function (response) { return response.json(); }).subscribe(function (data) {
+	            try {
+	                data = JSON.parse(data);
+	            }
+	            catch (e) {
+	                channel.unsubscribe();
+	                return;
+	            }
+	            for (var i in data) {
+	                var todoItem = new TodoItemModel(data[i].task, data[i].id);
+	                self.m_dataStore.todos.push(todoItem);
+	            }
+	            channel.unsubscribe();
+	        }, function (error) { return console.log("Could not load todos " + error); });
+	    };
+	    TodosService.prototype.createTodo = function (todo) {
+	        this.todoStatsModel.creates++;
+	        var sendData = JSON.stringify(todo);
+	        var channel = this._http.post(url + "/todos", sendData)
+	            .map(function (response) { return response.json(); }).subscribe(function (sendData) {
+	            channel.unsubscribe();
+	        }, function (error) { return console.log('Could not create todo.'); });
+	    };
+	    TodosService.prototype.updateTodo = function (todo) {
+	        this.todoStatsModel.updates++;
+	        var channel = this._http.put(url + "/todos/" + todo.id, JSON.stringify(todo))
+	            .map(function (response) { return response.json(); }).subscribe(function (data) {
+	            channel.unsubscribe();
+	        }, function (error) { return console.log('Could not update todo.'); });
+	    };
+	    TodosService.prototype.deleteTodo = function (todo) {
+	        var _this = this;
+	        this.todoStatsModel.deletes++;
+	        var channel = this._http.delete(url + "/todos/" + todo.id).subscribe(function (response) {
+	            _this.m_dataStore.todos.forEach(function (t, index) {
+	                if (t.id === todo.id) {
+	                    _this.m_dataStore.todos.splice(index, 1);
+	                }
+	            });
+	            channel.unsubscribe();
+	        }, function (error) { return console.log('Could not delete todo.'); });
+	    };
+	    TodosService = __decorate([
+	        core_1.Injectable(), 
+	        __metadata('design:paramtypes', [http_1.Http, TodoStatsModel_1.default])
+	    ], TodosService);
+	    return TodosService;
+	})();
+	exports.TodosService = TodosService;
+
+
+/***/ },
+/* 824 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var Sliderpanel_1 = __webpack_require__(15);
+	var ModalDialog_1 = __webpack_require__(35);
+	var CommBroker_1 = __webpack_require__(7);
+	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var Myip_1 = __webpack_require__(203);
+	var Notes2 = (function (_super) {
+	    __extends(Notes2, _super);
+	    function Notes2(sliderPanel, commBroker) {
+	        _super.call(this, sliderPanel, commBroker);
+	        this.sliderPanel = sliderPanel;
+	        this.commBroker = commBroker;
+	        this.me = this;
+	        this.slideLeft = 'notes3';
+	        this.slideRight = 'notes1';
+	    }
+	    Notes2 = __decorate([
+	        core_1.Component({
+	            selector: 'Notes2',
+	            providers: [Myip_1.MyIp],
+	            directives: [ModalDialog_1.ModalDialog, Myip_1.MyIp],
+	            template: " <button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left\"></span>\n                </button>\n                <button type=\"button\" (click)=\"onNext($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-right\"></span>\n                </button>\n                <hr/>\n                <small>I am notes2 component</small>\n                <div class=\"btn-group\" role=\"group\" aria-label=\"...\">\n                  <button (click)=\"openModal()\" type=\"button\" class=\"btn btn-default\">Open Modal</button>\n                </div>\n                <ModalDialog title=\"My owner is Notes2\" content=\"I am here to serve Notes2\" [owner]=\"me\">\n                </ModalDialog>\n                <MyIp></MyIp>\n                <ng-content></ng-content>"
+	        }), 
+	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
+	    ], Notes2);
+	    return Notes2;
+	})(NotesBase_1.NotesBase);
+	exports.Notes2 = Notes2;
+
+
+/***/ },
+/* 825 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var Sliderpanel_1 = __webpack_require__(15);
+	var ModalDialog_1 = __webpack_require__(35);
+	var CommBroker_1 = __webpack_require__(7);
+	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var Myip_1 = __webpack_require__(203);
+	var Notes2 = (function (_super) {
+	    __extends(Notes2, _super);
+	    function Notes2(sliderPanel, commBroker) {
+	        _super.call(this, sliderPanel, commBroker);
+	        this.sliderPanel = sliderPanel;
+	        this.commBroker = commBroker;
+	        this.me = this;
+	        this.slideLeft = 'notes3';
+	        this.slideRight = 'notes1';
+	    }
+	    Notes2 = __decorate([
+	        core_1.Component({
+	            selector: 'Notes2',
+	            providers: [Myip_1.MyIp],
+	            directives: [ModalDialog_1.ModalDialog, Myip_1.MyIp],
+	            template: " <button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left\"></span>\n                </button>\n                <button type=\"button\" (click)=\"onNext($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-right\"></span>\n                </button>\n                <hr/>\n                <small>I am notes2 component</small>\n                <div class=\"btn-group\" role=\"group\" aria-label=\"...\">\n                  <button (click)=\"openModal()\" type=\"button\" class=\"btn btn-default\">Open Modal</button>\n                </div>\n                <ModalDialog title=\"My owner is Notes2\" content=\"I am here to serve Notes2\" [owner]=\"me\">\n                </ModalDialog>\n                <MyIp></MyIp>\n                <ng-content></ng-content>"
+	        }), 
+	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
+	    ], Notes2);
+	    return Notes2;
+	})(NotesBase_1.NotesBase);
+	exports.Notes2 = Notes2;
+
+
+/***/ },
+/* 826 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var Sliderpanel_1 = __webpack_require__(15);
+	var CommBroker_1 = __webpack_require__(7);
+	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var Notes3 = (function (_super) {
+	    __extends(Notes3, _super);
+	    function Notes3(sliderPanel, commBroker) {
+	        _super.call(this, sliderPanel, commBroker);
+	        this.sliderPanel = sliderPanel;
+	        this.commBroker = commBroker;
+	        this.me = this;
+	        this.slideLeft = 'notes4';
+	        this.slideRight = 'notes2';
+	    }
+	    Notes3 = __decorate([
+	        core_1.Component({
+	            selector: 'Notes3',
+	            template: " <button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left\"></span>\n                </button>\n                <button type=\"button\" (click)=\"onNext($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-right\"></span>\n                </button>\n                <hr/>\n                <small>I am notes3 component</small>\n                <ng-content></ng-content>"
+	        }), 
+	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
+	    ], Notes3);
+	    return Notes3;
+	})(NotesBase_1.NotesBase);
+	exports.Notes3 = Notes3;
+
+
+/***/ },
+/* 827 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var Sliderpanel_1 = __webpack_require__(15);
+	var CommBroker_1 = __webpack_require__(7);
+	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var Notes3 = (function (_super) {
+	    __extends(Notes3, _super);
+	    function Notes3(sliderPanel, commBroker) {
+	        _super.call(this, sliderPanel, commBroker);
+	        this.sliderPanel = sliderPanel;
+	        this.commBroker = commBroker;
+	        this.me = this;
+	        this.slideLeft = 'notes4';
+	        this.slideRight = 'notes2';
+	    }
+	    Notes3 = __decorate([
+	        core_1.Component({
+	            selector: 'Notes3',
+	            template: " <button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left\"></span>\n                </button>\n                <button type=\"button\" (click)=\"onNext($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-right\"></span>\n                </button>\n                <hr/>\n                <small>I am notes3 component</small>\n                <ng-content></ng-content>"
+	        }), 
+	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
+	    ], Notes3);
+	    return Notes3;
+	})(NotesBase_1.NotesBase);
+	exports.Notes3 = Notes3;
+
+
+/***/ },
+/* 828 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var Sliderpanel_1 = __webpack_require__(15);
+	var CommBroker_1 = __webpack_require__(7);
+	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var Notes4 = (function (_super) {
+	    __extends(Notes4, _super);
+	    function Notes4(sliderPanel, commBroker) {
+	        _super.call(this, sliderPanel, commBroker);
+	        this.sliderPanel = sliderPanel;
+	        this.commBroker = commBroker;
+	        this.me = this;
+	        this.slideLeft = 'notes5';
+	        this.slideRight = 'notes3';
+	    }
+	    Notes4 = __decorate([
+	        core_1.Component({
+	            selector: 'Notes4',
+	            template: " <button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left \"></span>\n                </button>\n                <button type=\"button\" (click)=\"onNext($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-right\"></span>\n                </button>\n                <hr/>\n                <small>I am notes4 component</small>\n                <ng-content></ng-content>"
+	        }), 
+	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
+	    ], Notes4);
+	    return Notes4;
+	})(NotesBase_1.NotesBase);
+	exports.Notes4 = Notes4;
+
+
+/***/ },
+/* 829 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var Sliderpanel_1 = __webpack_require__(15);
+	var CommBroker_1 = __webpack_require__(7);
+	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var Notes4 = (function (_super) {
+	    __extends(Notes4, _super);
+	    function Notes4(sliderPanel, commBroker) {
+	        _super.call(this, sliderPanel, commBroker);
+	        this.sliderPanel = sliderPanel;
+	        this.commBroker = commBroker;
+	        this.me = this;
+	        this.slideLeft = 'notes5';
+	        this.slideRight = 'notes3';
+	    }
+	    Notes4 = __decorate([
+	        core_1.Component({
+	            selector: 'Notes4',
+	            template: " <button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left \"></span>\n                </button>\n                <button type=\"button\" (click)=\"onNext($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-right\"></span>\n                </button>\n                <hr/>\n                <small>I am notes4 component</small>\n                <ng-content></ng-content>"
+	        }), 
+	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
+	    ], Notes4);
+	    return Notes4;
+	})(NotesBase_1.NotesBase);
+	exports.Notes4 = Notes4;
+
+
+/***/ },
+/* 830 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var Sliderpanel_1 = __webpack_require__(15);
+	var CommBroker_1 = __webpack_require__(7);
+	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var Notes5 = (function (_super) {
+	    __extends(Notes5, _super);
+	    function Notes5(sliderPanel, commBroker) {
+	        _super.call(this, sliderPanel, commBroker);
+	        this.sliderPanel = sliderPanel;
+	        this.commBroker = commBroker;
+	        this.me = this;
+	        this.slideRight = 'notes4';
+	    }
+	    Notes5 = __decorate([
+	        core_1.Component({
+	            selector: 'Notes5',
+	            template: "<button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left \"></span>\n                </button>\n                <hr/>\n                <small>I am notes5 component</small>\n                <ng-content></ng-content>"
+	        }), 
+	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
+	    ], Notes5);
+	    return Notes5;
+	})(NotesBase_1.NotesBase);
+	exports.Notes5 = Notes5;
 
 
 /***/ },
@@ -20089,31 +20711,33 @@ webpackJsonp([1],[
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var contributors_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var RefreshTheme_1 = __webpack_require__(36);
-	var ng2_bootstrap_1 = __webpack_require__(122);
-	var Help = (function (_super) {
-	    __extends(Help, _super);
-	    function Help(contributors) {
-	        _super.call(this);
+	var Sliderpanel_1 = __webpack_require__(15);
+	var CommBroker_1 = __webpack_require__(7);
+	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var Notes5 = (function (_super) {
+	    __extends(Notes5, _super);
+	    function Notes5(sliderPanel, commBroker) {
+	        _super.call(this, sliderPanel, commBroker);
+	        this.sliderPanel = sliderPanel;
+	        this.commBroker = commBroker;
+	        this.me = this;
+	        this.slideRight = 'notes4';
 	    }
-	    Help = __decorate([
+	    Notes5 = __decorate([
 	        core_1.Component({
-	            selector: 'Help',
-	            providers: [contributors_1.Contributors],
-	            directives: [ng2_bootstrap_1.Alert, ng2_bootstrap_1.Rating],
-	            template: " <small>I am Help component and using <a href=\"https://github.com/valor-software/ng2-bootstrap\" target=\"_blank\">ng2-bootstrap</a></small>\n                <br/>\n                <alert type=\"info\">Welcome to Angular2 Bootstrap starter pack!</alert>\n                <rating [(ngModel)]=\"rate\" [max]=\"max\" [readonly]=\"isReadonly\" [titles]=\"['one','two','three']\" ></rating>\n                <ng-content></ng-content>\n                "
+	            selector: 'Notes5',
+	            template: "<button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left \"></span>\n                </button>\n                <hr/>\n                <small>I am notes5 component</small>\n                <ng-content></ng-content>"
 	        }), 
-	        __metadata('design:paramtypes', [contributors_1.Contributors])
-	    ], Help);
-	    return Help;
-	})(RefreshTheme_1.RefreshTheme);
-	exports.Help = Help;
+	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
+	    ], Notes5);
+	    return Notes5;
+	})(NotesBase_1.NotesBase);
+	exports.Notes5 = Notes5;
 
 
 /***/ },
 /* 832 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__) {
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
 	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20125,31 +20749,74 @@ webpackJsonp([1],[
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var Sliderpanel_1 = __webpack_require__(15);
-	var TodoStatsModel_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var Todo2 = (function () {
-	    function Todo2(sliderPanel, todoStatModel) {
-	        this.todoStatModel = todoStatModel;
-	        this.sliderPanel = sliderPanel;
+	var Conts_1 = __webpack_require__(11);
+	var CommBroker_1 = __webpack_require__(7);
+	var Notes1Props_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var Properties = (function () {
+	    function Properties(commBroker) {
+	        this.commBroker = commBroker;
+	        this.commBroker.setService(Conts_1.Consts.Services().Properties, this);
 	    }
-	    Todo2.prototype.onPrev = function (event) {
-	        this.sliderPanel.slideToPage('todo1', 'right');
+	    Properties.prototype.setPropView = function (value) {
+	        this.value = value;
 	    };
-	    Todo2 = __decorate([
+	    Properties.prototype.ngOnDestroy = function () {
+	    };
+	    Properties = __decorate([
 	        core_1.Component({
-	            selector: 'Todo2',
-	            styles: [__webpack_require__(__webpack_module_template_argument_1__)],
-	            template: " <button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left \"></span>\n                    </button>\n                    <small>I am todo2 component</small>\n                    <ng-content></ng-content>\n                    <div class=\"container\">\n                        <div class=\"row\">\n\n                            <div class=\"col-md-12\">\n                              <div class=\"update-nag\">\n                                <div class=\"update-split\"><i class=\"fa fa-refresh\"></i></div>\n                                <div class=\"update-text\">Total To-Do updates from server: {{todoStatModel.updates}}</div>\n                              </div>\n                            </div>\n\n                            <div class=\"col-md-12\">\n                              <div class=\"update-nag\">\n                                <div class=\"update-split update-info\"><i class=\"fa fa-folder-open\"></i></div>\n                                <div class=\"update-text\">Total To-Do reads from server: {{todoStatModel.reads}}</div>\n                              </div>\n                            </div>\n\n                            <div class=\"col-md-12\">\n                              <div class=\"update-nag\">\n                                <div class=\"update-split update-success\"><i class=\"fa fa-leaf\"></i></div>\n                                <div class=\"update-text\">Total To-Do creates from server: {{todoStatModel.creates}}</div>\n                              </div>\n                            </div>\n\n                            <div class=\"col-md-12\">\n                              <div class=\"update-nag\">\n                                <div class=\"update-split update-danger\"><i class=\"fa fa-warning-sign\"></i></div>\n                                <div class=\"update-text\">Total To-Do deletes from server: {{todoStatModel.deletes}}</div>\n                              </div>\n                            </div>\n\n                        </div>\n                    </div>\n                    "
+	            selector: 'Properties',
+	            directives: [Notes1Props_1.Notes1Props],
+	            template: "\n                <h4>Properties</h4>\n                <hr/>\n                 <ul [ngSwitch]=\"value\">\n                  <li *ngSwitchWhen=\"'notes1'\">\n                    <Notes1Props></Notes1Props>\n                  </li>\n                  <li *ngSwitchWhen=\"'notes2'\"><h1>Notes 2</h1></li>\n                  <li *ngSwitchWhen=\"'notes3'\"><h1>Notes 3</h1></li>\n                  <li *ngSwitchWhen=\"'notes4'\"><h1>Notes 4</h1></li>\n                  <li *ngSwitchWhen=\"'notes5'\"><h1>Notes 5</h1></li>\n                  <li *ngSwitchWhen=\"'Digg'\"><h1>Digg</h1></li>\n                  <li *ngSwitchWhen=\"'Weather'\"><h1>Weather</h1></li>\n                  <li *ngSwitchWhen=\"'Contact'\"><h1>Contact</h1></li>\n                  <li *ngSwitchWhen=\"'Logout'\"><h1>Logout</h1></li>\n                </ul>\n                <ng-content></ng-content>\n              "
 	        }), 
-	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, TodoStatsModel_1.default])
-	    ], Todo2);
-	    return Todo2;
+	        __metadata('design:paramtypes', [CommBroker_1.CommBroker])
+	    ], Properties);
+	    return Properties;
 	})();
-	exports.Todo2 = Todo2;
+	exports.Properties = Properties;
 
 
 /***/ },
 /* 833 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var Conts_1 = __webpack_require__(11);
+	var CommBroker_1 = __webpack_require__(7);
+	var Notes1Props_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var Properties = (function () {
+	    function Properties(commBroker) {
+	        this.commBroker = commBroker;
+	        this.commBroker.setService(Conts_1.Consts.Services().Properties, this);
+	    }
+	    Properties.prototype.setPropView = function (value) {
+	        this.value = value;
+	    };
+	    Properties.prototype.ngOnDestroy = function () {
+	    };
+	    Properties = __decorate([
+	        core_1.Component({
+	            selector: 'Properties',
+	            directives: [Notes1Props_1.Notes1Props],
+	            template: "\n                <h4>Properties</h4>\n                <hr/>\n                 <ul [ngSwitch]=\"value\">\n                  <li *ngSwitchWhen=\"'notes1'\">\n                    <Notes1Props></Notes1Props>\n                  </li>\n                  <li *ngSwitchWhen=\"'notes2'\"><h1>Notes 2</h1></li>\n                  <li *ngSwitchWhen=\"'notes3'\"><h1>Notes 3</h1></li>\n                  <li *ngSwitchWhen=\"'notes4'\"><h1>Notes 4</h1></li>\n                  <li *ngSwitchWhen=\"'notes5'\"><h1>Notes 5</h1></li>\n                  <li *ngSwitchWhen=\"'Digg'\"><h1>Digg</h1></li>\n                  <li *ngSwitchWhen=\"'Weather'\"><h1>Weather</h1></li>\n                  <li *ngSwitchWhen=\"'Contact'\"><h1>Contact</h1></li>\n                  <li *ngSwitchWhen=\"'Logout'\"><h1>Logout</h1></li>\n                </ul>\n                <ng-content></ng-content>\n              "
+	        }), 
+	        __metadata('design:paramtypes', [CommBroker_1.CommBroker])
+	    ], Properties);
+	    return Properties;
+	})();
+	exports.Properties = Properties;
+
+
+/***/ },
+/* 834 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__) {
 
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -20162,153 +20829,62 @@ webpackJsonp([1],[
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var Sliderpanel_1 = __webpack_require__(15);
-	var TodoStatsModel_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var Todo2 = (function () {
-	    function Todo2(sliderPanel, todoStatModel) {
-	        this.todoStatModel = todoStatModel;
-	        this.sliderPanel = sliderPanel;
+	var Conts_1 = __webpack_require__(11);
+	var WeatherService_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var SortableHeader_1 = __webpack_require__(__webpack_module_template_argument_1__);
+	var common_1 = __webpack_require__(12);
+	var OrderBy_1 = __webpack_require__(207);
+	var common_2 = __webpack_require__(12);
+	__webpack_require__(24);
+	__webpack_require__(114);
+	__webpack_require__(44);
+	__webpack_require__(112);
+	__webpack_require__(21);
+	__webpack_require__(24);
+	var CommBroker_1 = __webpack_require__(7);
+	var Weather = (function () {
+	    function Weather(weatherService, commBroker) {
+	        this.weatherService = weatherService;
+	        this.commBroker = commBroker;
+	        this.zipControl = new common_1.Control();
+	        this.sort = { field: null, desc: false };
+	        this.listenWeatherInput();
+	        this.commBroker.getService(Conts_1.Consts.Services().Properties).setPropView('Weather');
 	    }
-	    Todo2.prototype.onPrev = function (event) {
-	        this.sliderPanel.slideToPage('todo1', 'right');
+	    Weather.prototype.ngAfterViewInit = function () {
+	        this.zipControl.updateValue('91301');
 	    };
-	    Todo2 = __decorate([
-	        core_1.Component({
-	            selector: 'Todo2',
-	            styles: [__webpack_require__(__webpack_module_template_argument_1__)],
-	            template: " <button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left \"></span>\n                    </button>\n                    <small>I am todo2 component</small>\n                    <ng-content></ng-content>\n                    <div class=\"container\">\n                        <div class=\"row\">\n\n                            <div class=\"col-md-12\">\n                              <div class=\"update-nag\">\n                                <div class=\"update-split\"><i class=\"fa fa-refresh\"></i></div>\n                                <div class=\"update-text\">Total To-Do updates from server: {{todoStatModel.updates}}</div>\n                              </div>\n                            </div>\n\n                            <div class=\"col-md-12\">\n                              <div class=\"update-nag\">\n                                <div class=\"update-split update-info\"><i class=\"fa fa-folder-open\"></i></div>\n                                <div class=\"update-text\">Total To-Do reads from server: {{todoStatModel.reads}}</div>\n                              </div>\n                            </div>\n\n                            <div class=\"col-md-12\">\n                              <div class=\"update-nag\">\n                                <div class=\"update-split update-success\"><i class=\"fa fa-leaf\"></i></div>\n                                <div class=\"update-text\">Total To-Do creates from server: {{todoStatModel.creates}}</div>\n                              </div>\n                            </div>\n\n                            <div class=\"col-md-12\">\n                              <div class=\"update-nag\">\n                                <div class=\"update-split update-danger\"><i class=\"fa fa-warning-sign\"></i></div>\n                                <div class=\"update-text\">Total To-Do deletes from server: {{todoStatModel.deletes}}</div>\n                              </div>\n                            </div>\n\n                        </div>\n                    </div>\n                    "
-	        }), 
-	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, TodoStatsModel_1.default])
-	    ], Todo2);
-	    return Todo2;
-	})();
-	exports.Todo2 = Todo2;
-
-
-/***/ },
-/* 834 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
-
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(1);
-	var http_1 = __webpack_require__(17);
-	var Lib_1 = __webpack_require__(123);
-	__webpack_require__(82);
-	var TodoStatsModel_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var url = 'http://secure.digitalsignage.com';
-	var TodoItemModel = (function () {
-	    function TodoItemModel(text, id) {
-	        this.task = text;
-	        this.id = id || Lib_1.Lib.guid();
-	    }
-	    Object.defineProperty(TodoItemModel.prototype, "text", {
-	        get: function () {
-	            console.log('getting value for task', this.task);
-	            return this.task;
-	        },
-	        set: function (value) {
-	            this.task = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    TodoItemModel.prototype.getTask = function () {
-	        return this.task;
-	    };
-	    return TodoItemModel;
-	})();
-	exports.TodoItemModel = TodoItemModel;
-	var TodosService = (function () {
-	    function TodosService(_http, todoStatsModel) {
-	        this._http = _http;
-	        this.todoStatsModel = todoStatsModel;
-	        var self = this;
-	        this.m_dataStore = { todos: [] };
-	        this.loadTodos();
-	    }
-	    TodosService.prototype.addItem = function (newItem) {
-	        var todo = new TodoItemModel(newItem);
-	        this.m_dataStore.todos.push(todo);
-	        this.createTodo(todo);
-	    };
-	    TodosService.prototype.removeItem = function (item) {
-	        var index = this.m_dataStore.todos.indexOf(item);
-	        this.m_dataStore.todos.splice(index, 1);
-	        this.deleteTodo(item);
-	    };
-	    TodosService.prototype.editItem = function (item) {
-	        var index = this.m_dataStore.todos.indexOf(item);
-	        this.m_dataStore.todos[index].text = item.getTask();
-	        this.updateTodo(item);
-	    };
-	    TodosService.prototype.getDataStore = function () {
-	        return this.m_dataStore;
-	    };
-	    TodosService.prototype.loadTodos = function () {
-	        var self = this;
-	        this.todoStatsModel.reads++;
-	        var channel = this._http.get(url + "/todos").map(function (response) { return response.json(); }).subscribe(function (data) {
-	            try {
-	                data = JSON.parse(data);
-	            }
-	            catch (e) {
-	                channel.unsubscribe();
-	                return;
-	            }
-	            for (var i in data) {
-	                var todoItem = new TodoItemModel(data[i].task, data[i].id);
-	                self.m_dataStore.todos.push(todoItem);
-	            }
-	            channel.unsubscribe();
-	        }, function (error) { return console.log("Could not load todos " + error); });
-	    };
-	    TodosService.prototype.createTodo = function (todo) {
-	        this.todoStatsModel.creates++;
-	        var sendData = JSON.stringify(todo);
-	        var channel = this._http.post(url + "/todos", sendData)
-	            .map(function (response) { return response.json(); }).subscribe(function (sendData) {
-	            channel.unsubscribe();
-	        }, function (error) { return console.log('Could not create todo.'); });
-	    };
-	    TodosService.prototype.updateTodo = function (todo) {
-	        this.todoStatsModel.updates++;
-	        var channel = this._http.put(url + "/todos/" + todo.id, JSON.stringify(todo))
-	            .map(function (response) { return response.json(); }).subscribe(function (data) {
-	            channel.unsubscribe();
-	        }, function (error) { return console.log('Could not update todo.'); });
-	    };
-	    TodosService.prototype.deleteTodo = function (todo) {
+	    Weather.prototype.listenWeatherInput = function () {
 	        var _this = this;
-	        this.todoStatsModel.deletes++;
-	        var channel = this._http.delete(url + "/todos/" + todo.id).subscribe(function (response) {
-	            _this.m_dataStore.todos.forEach(function (t, index) {
-	                if (t.id === todo.id) {
-	                    _this.m_dataStore.todos.splice(index, 1);
-	                }
-	            });
-	            channel.unsubscribe();
-	        }, function (error) { return console.log('Could not delete todo.'); });
+	        return this.weatherItems = this.zipControl.valueChanges
+	            .debounceTime(400)
+	            .distinctUntilChanged()
+	            .filter(function (zip) {
+	            return zip.length > 3;
+	        }).switchMap(function (zip) {
+	            return _this.weatherService.search(zip + "/1");
+	        });
 	    };
-	    TodosService = __decorate([
-	        core_1.Injectable(), 
-	        __metadata('design:paramtypes', [http_1.Http, TodoStatsModel_1.default])
-	    ], TodosService);
-	    return TodosService;
+	    Weather = __decorate([
+	        core_1.Component({
+	            selector: 'Weather',
+	            providers: [WeatherService_1.WeatherService, SortableHeader_1.SortableHeader],
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPushObserve,
+	            pipes: [OrderBy_1.OrderBy],
+	            directives: [common_2.COMMON_DIRECTIVES, SortableHeader_1.SortableHeader],
+	            styles: ["input {margin: 20px; width: 50%}"],
+	            template: "\n    <small>I am a weather component</small>\n    <input type=\"text\" class=\"form-control\" placeholder=\"enter city or zip code\" [ngFormControl]=\"zipControl\">\n    <table class=\"table\">\n      <thead>\n        <tr>\n          <th>day</th>\n          <th>icon</th>\n          <th sortableHeader=\"maxtempF\" [sort]=\"sort\">high</th>\n          <th sortableHeader=\"mintempF\" [sort]=\"sort\">low</th>\n        </tr>\n      </thead>\n      <tbody>\n      <!-- no need to subscribe to observable since async does this for us -->\n        <tr *ngFor=\"#item of weatherItems | async | OrderBy:sort.field:sort.desc\">\n          <td>{{ item.day }}</td>\n          <td><img src=\"{{ item.iconPath }}\" style=\"width: 40px; height: 40px\"/></td>\n          <td>{{ item.maxtempF }}</td>\n          <td>{{ item.mintempF }}</td>\n          <!-- <td [innerHtml]=\"item.day\"></td> -->\n        </tr>\n      </tbody>\n    </table>\n  ",
+	        }), 
+	        __metadata('design:paramtypes', [WeatherService_1.WeatherService, CommBroker_1.CommBroker])
+	    ], Weather);
+	    return Weather;
 	})();
-	exports.TodosService = TodosService;
+	exports.Weather = Weather;
 
 
 /***/ },
 /* 835 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__) {
 
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
 	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20320,122 +20896,63 @@ webpackJsonp([1],[
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var http_1 = __webpack_require__(17);
-	var Lib_1 = __webpack_require__(123);
-	__webpack_require__(82);
-	var TodoStatsModel_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var url = 'http://secure.digitalsignage.com';
-	var TodoItemModel = (function () {
-	    function TodoItemModel(text, id) {
-	        this.task = text;
-	        this.id = id || Lib_1.Lib.guid();
+	var Conts_1 = __webpack_require__(11);
+	var WeatherService_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var SortableHeader_1 = __webpack_require__(__webpack_module_template_argument_1__);
+	var common_1 = __webpack_require__(12);
+	var OrderBy_1 = __webpack_require__(207);
+	var common_2 = __webpack_require__(12);
+	__webpack_require__(24);
+	__webpack_require__(114);
+	__webpack_require__(44);
+	__webpack_require__(112);
+	__webpack_require__(21);
+	__webpack_require__(24);
+	var CommBroker_1 = __webpack_require__(7);
+	var Weather = (function () {
+	    function Weather(weatherService, commBroker) {
+	        this.weatherService = weatherService;
+	        this.commBroker = commBroker;
+	        this.zipControl = new common_1.Control();
+	        this.sort = { field: null, desc: false };
+	        this.listenWeatherInput();
+	        this.commBroker.getService(Conts_1.Consts.Services().Properties).setPropView('Weather');
 	    }
-	    Object.defineProperty(TodoItemModel.prototype, "text", {
-	        get: function () {
-	            console.log('getting value for task', this.task);
-	            return this.task;
-	        },
-	        set: function (value) {
-	            this.task = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    TodoItemModel.prototype.getTask = function () {
-	        return this.task;
+	    Weather.prototype.ngAfterViewInit = function () {
+	        this.zipControl.updateValue('91301');
 	    };
-	    return TodoItemModel;
-	})();
-	exports.TodoItemModel = TodoItemModel;
-	var TodosService = (function () {
-	    function TodosService(_http, todoStatsModel) {
-	        this._http = _http;
-	        this.todoStatsModel = todoStatsModel;
-	        var self = this;
-	        this.m_dataStore = { todos: [] };
-	        this.loadTodos();
-	    }
-	    TodosService.prototype.addItem = function (newItem) {
-	        var todo = new TodoItemModel(newItem);
-	        this.m_dataStore.todos.push(todo);
-	        this.createTodo(todo);
-	    };
-	    TodosService.prototype.removeItem = function (item) {
-	        var index = this.m_dataStore.todos.indexOf(item);
-	        this.m_dataStore.todos.splice(index, 1);
-	        this.deleteTodo(item);
-	    };
-	    TodosService.prototype.editItem = function (item) {
-	        var index = this.m_dataStore.todos.indexOf(item);
-	        this.m_dataStore.todos[index].text = item.getTask();
-	        this.updateTodo(item);
-	    };
-	    TodosService.prototype.getDataStore = function () {
-	        return this.m_dataStore;
-	    };
-	    TodosService.prototype.loadTodos = function () {
-	        var self = this;
-	        this.todoStatsModel.reads++;
-	        var channel = this._http.get(url + "/todos").map(function (response) { return response.json(); }).subscribe(function (data) {
-	            try {
-	                data = JSON.parse(data);
-	            }
-	            catch (e) {
-	                channel.unsubscribe();
-	                return;
-	            }
-	            for (var i in data) {
-	                var todoItem = new TodoItemModel(data[i].task, data[i].id);
-	                self.m_dataStore.todos.push(todoItem);
-	            }
-	            channel.unsubscribe();
-	        }, function (error) { return console.log("Could not load todos " + error); });
-	    };
-	    TodosService.prototype.createTodo = function (todo) {
-	        this.todoStatsModel.creates++;
-	        var sendData = JSON.stringify(todo);
-	        var channel = this._http.post(url + "/todos", sendData)
-	            .map(function (response) { return response.json(); }).subscribe(function (sendData) {
-	            channel.unsubscribe();
-	        }, function (error) { return console.log('Could not create todo.'); });
-	    };
-	    TodosService.prototype.updateTodo = function (todo) {
-	        this.todoStatsModel.updates++;
-	        var channel = this._http.put(url + "/todos/" + todo.id, JSON.stringify(todo))
-	            .map(function (response) { return response.json(); }).subscribe(function (data) {
-	            channel.unsubscribe();
-	        }, function (error) { return console.log('Could not update todo.'); });
-	    };
-	    TodosService.prototype.deleteTodo = function (todo) {
+	    Weather.prototype.listenWeatherInput = function () {
 	        var _this = this;
-	        this.todoStatsModel.deletes++;
-	        var channel = this._http.delete(url + "/todos/" + todo.id).subscribe(function (response) {
-	            _this.m_dataStore.todos.forEach(function (t, index) {
-	                if (t.id === todo.id) {
-	                    _this.m_dataStore.todos.splice(index, 1);
-	                }
-	            });
-	            channel.unsubscribe();
-	        }, function (error) { return console.log('Could not delete todo.'); });
+	        return this.weatherItems = this.zipControl.valueChanges
+	            .debounceTime(400)
+	            .distinctUntilChanged()
+	            .filter(function (zip) {
+	            return zip.length > 3;
+	        }).switchMap(function (zip) {
+	            return _this.weatherService.search(zip + "/1");
+	        });
 	    };
-	    TodosService = __decorate([
-	        core_1.Injectable(), 
-	        __metadata('design:paramtypes', [http_1.Http, TodoStatsModel_1.default])
-	    ], TodosService);
-	    return TodosService;
+	    Weather = __decorate([
+	        core_1.Component({
+	            selector: 'Weather',
+	            providers: [WeatherService_1.WeatherService, SortableHeader_1.SortableHeader],
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPushObserve,
+	            pipes: [OrderBy_1.OrderBy],
+	            directives: [common_2.COMMON_DIRECTIVES, SortableHeader_1.SortableHeader],
+	            styles: ["input {margin: 20px; width: 50%}"],
+	            template: "\n    <small>I am a weather component</small>\n    <input type=\"text\" class=\"form-control\" placeholder=\"enter city or zip code\" [ngFormControl]=\"zipControl\">\n    <table class=\"table\">\n      <thead>\n        <tr>\n          <th>day</th>\n          <th>icon</th>\n          <th sortableHeader=\"maxtempF\" [sort]=\"sort\">high</th>\n          <th sortableHeader=\"mintempF\" [sort]=\"sort\">low</th>\n        </tr>\n      </thead>\n      <tbody>\n      <!-- no need to subscribe to observable since async does this for us -->\n        <tr *ngFor=\"#item of weatherItems | async | OrderBy:sort.field:sort.desc\">\n          <td>{{ item.day }}</td>\n          <td><img src=\"{{ item.iconPath }}\" style=\"width: 40px; height: 40px\"/></td>\n          <td>{{ item.maxtempF }}</td>\n          <td>{{ item.mintempF }}</td>\n          <!-- <td [innerHtml]=\"item.day\"></td> -->\n        </tr>\n      </tbody>\n    </table>\n  ",
+	        }), 
+	        __metadata('design:paramtypes', [WeatherService_1.WeatherService, CommBroker_1.CommBroker])
+	    ], Weather);
+	    return Weather;
 	})();
-	exports.TodosService = TodosService;
+	exports.Weather = Weather;
 
 
 /***/ },
 /* 836 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__) {
 
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
 	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
 	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20446,44 +20963,47 @@ webpackJsonp([1],[
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var Sliderpanel_1 = __webpack_require__(15);
-	var ModalDialog_1 = __webpack_require__(35);
+	var film_actions_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var film_selection_view_1 = __webpack_require__(__webpack_module_template_argument_1__);
+	var film_view_1 = __webpack_require__(__webpack_module_template_argument_2__);
 	var CommBroker_1 = __webpack_require__(7);
-	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var Myip_1 = __webpack_require__(203);
-	var Notes2 = (function (_super) {
-	    __extends(Notes2, _super);
-	    function Notes2(sliderPanel, commBroker) {
-	        _super.call(this, sliderPanel, commBroker);
-	        this.sliderPanel = sliderPanel;
+	var Consts = __webpack_require__(__webpack_module_template_argument_3__);
+	var FilmsComponent = (function () {
+	    function FilmsComponent(commBroker, _filmActions) {
 	        this.commBroker = commBroker;
-	        this.me = this;
-	        this.slideLeft = 'notes3';
-	        this.slideRight = 'notes1';
+	        this._filmActions = _filmActions;
+	        this.currentFilm = null;
+	        this.isFetchingCurrentFilm = false;
+	        var self = this;
+	        this._appStore = commBroker.getService(Consts.APP_STORE);
+	        this._appStore.subscribe(function (state) {
+	            self.filmsCount = state.films.count;
+	            self.currentFilm = state.films.currentFilm;
+	            self.isFetchingCurrentFilm = state.films.isFetchingFilm;
+	        });
+	        this._appStore.dispatch(_filmActions.fetchFilms());
 	    }
-	    Notes2 = __decorate([
+	    FilmsComponent.prototype.setCurrentFilm = function (index) {
+	        this._appStore.dispatch(this._filmActions.setCurrentFilm(index));
+	        this._appStore.dispatch(this._filmActions.fetchFilm(index));
+	    };
+	    FilmsComponent = __decorate([
 	        core_1.Component({
-	            selector: 'Notes2',
-	            providers: [Myip_1.MyIp],
-	            directives: [ModalDialog_1.ModalDialog, Myip_1.MyIp],
-	            template: " <button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left\"></span>\n                </button>\n                <button type=\"button\" (click)=\"onNext($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-right\"></span>\n                </button>\n                <hr/>\n                <small>I am notes2 component</small>\n                <div class=\"btn-group\" role=\"group\" aria-label=\"...\">\n                  <button (click)=\"openModal()\" type=\"button\" class=\"btn btn-default\">Open Modal</button>\n                </div>\n                <ModalDialog title=\"My owner is Notes2\" content=\"I am here to serve Notes2\" [owner]=\"me\">\n                </ModalDialog>\n                <MyIp></MyIp>\n                <ng-content></ng-content>"
+	            selector: 'films-component',
+	            template: "\n        <h3>Films</h3>\n        <film-selection [count]=\"filmsCount\" (current)=\"setCurrentFilm($event)\"></film-selection>\n        <div [ngClass]=\"{'text-muted':isFetchingCurrentFilm,'text-primary':!isFetchingCurrentFilm}\" style=\"margin-top:20px;\">\n            <film [data]=\"currentFilm\" [loading]=\"isFetchingCurrentFilm\"></film>\n        </div>\n\n    ",
+	            directives: [film_selection_view_1.FilmSelectionView, film_view_1.FilmView]
 	        }), 
-	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
-	    ], Notes2);
-	    return Notes2;
-	})(NotesBase_1.NotesBase);
-	exports.Notes2 = Notes2;
+	        __metadata('design:paramtypes', [CommBroker_1.CommBroker, film_actions_1.FilmActions])
+	    ], FilmsComponent);
+	    return FilmsComponent;
+	})();
+	exports.FilmsComponent = FilmsComponent;
 
 
 /***/ },
 /* 837 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__) {
 
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
 	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
 	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20494,44 +21014,47 @@ webpackJsonp([1],[
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var Sliderpanel_1 = __webpack_require__(15);
-	var ModalDialog_1 = __webpack_require__(35);
+	var film_actions_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var film_selection_view_1 = __webpack_require__(__webpack_module_template_argument_1__);
+	var film_view_1 = __webpack_require__(__webpack_module_template_argument_2__);
 	var CommBroker_1 = __webpack_require__(7);
-	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var Myip_1 = __webpack_require__(203);
-	var Notes2 = (function (_super) {
-	    __extends(Notes2, _super);
-	    function Notes2(sliderPanel, commBroker) {
-	        _super.call(this, sliderPanel, commBroker);
-	        this.sliderPanel = sliderPanel;
+	var Consts = __webpack_require__(__webpack_module_template_argument_3__);
+	var FilmsComponent = (function () {
+	    function FilmsComponent(commBroker, _filmActions) {
 	        this.commBroker = commBroker;
-	        this.me = this;
-	        this.slideLeft = 'notes3';
-	        this.slideRight = 'notes1';
+	        this._filmActions = _filmActions;
+	        this.currentFilm = null;
+	        this.isFetchingCurrentFilm = false;
+	        var self = this;
+	        this._appStore = commBroker.getService(Consts.APP_STORE);
+	        this._appStore.subscribe(function (state) {
+	            self.filmsCount = state.films.count;
+	            self.currentFilm = state.films.currentFilm;
+	            self.isFetchingCurrentFilm = state.films.isFetchingFilm;
+	        });
+	        this._appStore.dispatch(_filmActions.fetchFilms());
 	    }
-	    Notes2 = __decorate([
+	    FilmsComponent.prototype.setCurrentFilm = function (index) {
+	        this._appStore.dispatch(this._filmActions.setCurrentFilm(index));
+	        this._appStore.dispatch(this._filmActions.fetchFilm(index));
+	    };
+	    FilmsComponent = __decorate([
 	        core_1.Component({
-	            selector: 'Notes2',
-	            providers: [Myip_1.MyIp],
-	            directives: [ModalDialog_1.ModalDialog, Myip_1.MyIp],
-	            template: " <button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left\"></span>\n                </button>\n                <button type=\"button\" (click)=\"onNext($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-right\"></span>\n                </button>\n                <hr/>\n                <small>I am notes2 component</small>\n                <div class=\"btn-group\" role=\"group\" aria-label=\"...\">\n                  <button (click)=\"openModal()\" type=\"button\" class=\"btn btn-default\">Open Modal</button>\n                </div>\n                <ModalDialog title=\"My owner is Notes2\" content=\"I am here to serve Notes2\" [owner]=\"me\">\n                </ModalDialog>\n                <MyIp></MyIp>\n                <ng-content></ng-content>"
+	            selector: 'films-component',
+	            template: "\n        <h3>Films</h3>\n        <film-selection [count]=\"filmsCount\" (current)=\"setCurrentFilm($event)\"></film-selection>\n        <div [ngClass]=\"{'text-muted':isFetchingCurrentFilm,'text-primary':!isFetchingCurrentFilm}\" style=\"margin-top:20px;\">\n            <film [data]=\"currentFilm\" [loading]=\"isFetchingCurrentFilm\"></film>\n        </div>\n\n    ",
+	            directives: [film_selection_view_1.FilmSelectionView, film_view_1.FilmView]
 	        }), 
-	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
-	    ], Notes2);
-	    return Notes2;
-	})(NotesBase_1.NotesBase);
-	exports.Notes2 = Notes2;
+	        __metadata('design:paramtypes', [CommBroker_1.CommBroker, film_actions_1.FilmActions])
+	    ], FilmsComponent);
+	    return FilmsComponent;
+	})();
+	exports.FilmsComponent = FilmsComponent;
 
 
 /***/ },
 /* 838 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__, __webpack_module_template_argument_5__) {
 
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
 	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
 	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20542,40 +21065,54 @@ webpackJsonp([1],[
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var Sliderpanel_1 = __webpack_require__(15);
+	var cart_actions_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var part_actions_1 = __webpack_require__(__webpack_module_template_argument_1__);
+	var parts_view_1 = __webpack_require__(__webpack_module_template_argument_2__);
+	var cart_view_1 = __webpack_require__(__webpack_module_template_argument_3__);
+	var add_part_view_1 = __webpack_require__(__webpack_module_template_argument_4__);
+	var reselect_1 = __webpack_require__(32);
 	var CommBroker_1 = __webpack_require__(7);
-	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var Notes3 = (function (_super) {
-	    __extends(Notes3, _super);
-	    function Notes3(sliderPanel, commBroker) {
-	        _super.call(this, sliderPanel, commBroker);
-	        this.sliderPanel = sliderPanel;
-	        this.commBroker = commBroker;
-	        this.me = this;
-	        this.slideLeft = 'notes4';
-	        this.slideRight = 'notes2';
+	var Consts = __webpack_require__(__webpack_module_template_argument_5__);
+	var partsInCartSelector = reselect_1.createSelector(function (state) { return state.cart; }, function (state) { return state.parts; }, function (cart, parts) {
+	    var partsById = parts.reduce(function (map, part) { return (map[part.id] = part) && map; }, {});
+	    return cart.map(function (id) { return partsById[id]; });
+	});
+	var ShoppingComponent = (function () {
+	    function ShoppingComponent(commBroker, partActions, cartActions) {
+	        var _this = this;
+	        this.parts = [];
+	        this.partsInCart = [];
+	        this.appStore = commBroker.getService(Consts.APP_STORE);
+	        this.addPart = partActions.createDispatcher(this.appStore, partActions.addPart);
+	        this.addPartToCart = cartActions.createDispatcher(this.appStore, cartActions.addToCart);
+	        this.removePartFromCart = cartActions.createDispatcher(this.appStore, cartActions.removeFromCart);
+	        this.appStore.subscribe(function (state) {
+	            _this.parts = state.parts;
+	            _this.partsInCart = partsInCartSelector(state);
+	        });
+	        ShoppingComponent.createInitialSetOfParts(this.appStore, partActions);
 	    }
-	    Notes3 = __decorate([
+	    ShoppingComponent.createInitialSetOfParts = function (appStore, partActions) {
+	        appStore.dispatch(partActions.addPart("Lightsaber"));
+	        appStore.dispatch(partActions.addPart("X-wing diecast"));
+	    };
+	    ShoppingComponent = __decorate([
 	        core_1.Component({
-	            selector: 'Notes3',
-	            template: " <button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left\"></span>\n                </button>\n                <button type=\"button\" (click)=\"onNext($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-right\"></span>\n                </button>\n                <hr/>\n                <small>I am notes3 component</small>\n                <ng-content></ng-content>"
+	            selector: 'shopping',
+	            template: "\n        <h3>Parts</h3>\n        <add-part (add)=\"addPart($event)\"></add-part>\n        <parts [parts]=\"parts\" [partsInCart]=\"partsInCart\" (addToCart)=\"addPartToCart($event)\"></parts>\n        <hr/>\n        <h3>Cart</h3>\n        <cart [parts]=\"partsInCart\" (removeFromCart)=\"removePartFromCart($event)\"></cart>\n    ",
+	            directives: [parts_view_1.PartsView, cart_view_1.CartView, add_part_view_1.AddPartsView]
 	        }), 
-	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
-	    ], Notes3);
-	    return Notes3;
-	})(NotesBase_1.NotesBase);
-	exports.Notes3 = Notes3;
+	        __metadata('design:paramtypes', [CommBroker_1.CommBroker, part_actions_1.PartActions, cart_actions_1.CartActions])
+	    ], ShoppingComponent);
+	    return ShoppingComponent;
+	})();
+	exports.ShoppingComponent = ShoppingComponent;
 
 
 /***/ },
 /* 839 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__, __webpack_module_template_argument_5__) {
 
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
 	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
 	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20586,524 +21123,271 @@ webpackJsonp([1],[
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var Sliderpanel_1 = __webpack_require__(15);
+	var cart_actions_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var part_actions_1 = __webpack_require__(__webpack_module_template_argument_1__);
+	var parts_view_1 = __webpack_require__(__webpack_module_template_argument_2__);
+	var cart_view_1 = __webpack_require__(__webpack_module_template_argument_3__);
+	var add_part_view_1 = __webpack_require__(__webpack_module_template_argument_4__);
+	var reselect_1 = __webpack_require__(32);
 	var CommBroker_1 = __webpack_require__(7);
-	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var Notes3 = (function (_super) {
-	    __extends(Notes3, _super);
-	    function Notes3(sliderPanel, commBroker) {
-	        _super.call(this, sliderPanel, commBroker);
-	        this.sliderPanel = sliderPanel;
-	        this.commBroker = commBroker;
-	        this.me = this;
-	        this.slideLeft = 'notes4';
-	        this.slideRight = 'notes2';
+	var Consts = __webpack_require__(__webpack_module_template_argument_5__);
+	var partsInCartSelector = reselect_1.createSelector(function (state) { return state.cart; }, function (state) { return state.parts; }, function (cart, parts) {
+	    var partsById = parts.reduce(function (map, part) { return (map[part.id] = part) && map; }, {});
+	    return cart.map(function (id) { return partsById[id]; });
+	});
+	var ShoppingComponent = (function () {
+	    function ShoppingComponent(commBroker, partActions, cartActions) {
+	        var _this = this;
+	        this.parts = [];
+	        this.partsInCart = [];
+	        this.appStore = commBroker.getService(Consts.APP_STORE);
+	        this.addPart = partActions.createDispatcher(this.appStore, partActions.addPart);
+	        this.addPartToCart = cartActions.createDispatcher(this.appStore, cartActions.addToCart);
+	        this.removePartFromCart = cartActions.createDispatcher(this.appStore, cartActions.removeFromCart);
+	        this.appStore.subscribe(function (state) {
+	            _this.parts = state.parts;
+	            _this.partsInCart = partsInCartSelector(state);
+	        });
+	        ShoppingComponent.createInitialSetOfParts(this.appStore, partActions);
 	    }
-	    Notes3 = __decorate([
+	    ShoppingComponent.createInitialSetOfParts = function (appStore, partActions) {
+	        appStore.dispatch(partActions.addPart("Lightsaber"));
+	        appStore.dispatch(partActions.addPart("X-wing diecast"));
+	    };
+	    ShoppingComponent = __decorate([
 	        core_1.Component({
-	            selector: 'Notes3',
-	            template: " <button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left\"></span>\n                </button>\n                <button type=\"button\" (click)=\"onNext($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-right\"></span>\n                </button>\n                <hr/>\n                <small>I am notes3 component</small>\n                <ng-content></ng-content>"
+	            selector: 'shopping',
+	            template: "\n        <h3>Parts</h3>\n        <add-part (add)=\"addPart($event)\"></add-part>\n        <parts [parts]=\"parts\" [partsInCart]=\"partsInCart\" (addToCart)=\"addPartToCart($event)\"></parts>\n        <hr/>\n        <h3>Cart</h3>\n        <cart [parts]=\"partsInCart\" (removeFromCart)=\"removePartFromCart($event)\"></cart>\n    ",
+	            directives: [parts_view_1.PartsView, cart_view_1.CartView, add_part_view_1.AddPartsView]
 	        }), 
-	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
-	    ], Notes3);
-	    return Notes3;
-	})(NotesBase_1.NotesBase);
-	exports.Notes3 = Notes3;
+	        __metadata('design:paramtypes', [CommBroker_1.CommBroker, part_actions_1.PartActions, cart_actions_1.CartActions])
+	    ], ShoppingComponent);
+	    return ShoppingComponent;
+	})();
+	exports.ShoppingComponent = ShoppingComponent;
 
 
 /***/ },
 /* 840 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(1);
-	var Sliderpanel_1 = __webpack_require__(15);
-	var CommBroker_1 = __webpack_require__(7);
-	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var Notes4 = (function (_super) {
-	    __extends(Notes4, _super);
-	    function Notes4(sliderPanel, commBroker) {
-	        _super.call(this, sliderPanel, commBroker);
-	        this.sliderPanel = sliderPanel;
-	        this.commBroker = commBroker;
-	        this.me = this;
-	        this.slideLeft = 'notes5';
-	        this.slideRight = 'notes3';
+	var CartActions = __webpack_require__(__webpack_module_template_argument_0__);
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = function (state, action) {
+	    if (state === void 0) { state = []; }
+	    if (action === void 0) { action = {}; }
+	    switch (action.type) {
+	        case CartActions.ADD_TO_CART:
+	            return state.concat([action.id]);
+	        case CartActions.REMOVE_FROM_CART:
+	            return state.filter(function (id) { return id !== action.id; });
+	        default:
+	            return state;
 	    }
-	    Notes4 = __decorate([
-	        core_1.Component({
-	            selector: 'Notes4',
-	            template: " <button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left \"></span>\n                </button>\n                <button type=\"button\" (click)=\"onNext($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-right\"></span>\n                </button>\n                <hr/>\n                <small>I am notes4 component</small>\n                <ng-content></ng-content>"
-	        }), 
-	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
-	    ], Notes4);
-	    return Notes4;
-	})(NotesBase_1.NotesBase);
-	exports.Notes4 = Notes4;
+	};
 
 
 /***/ },
 /* 841 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(1);
-	var Sliderpanel_1 = __webpack_require__(15);
-	var CommBroker_1 = __webpack_require__(7);
-	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var Notes4 = (function (_super) {
-	    __extends(Notes4, _super);
-	    function Notes4(sliderPanel, commBroker) {
-	        _super.call(this, sliderPanel, commBroker);
-	        this.sliderPanel = sliderPanel;
-	        this.commBroker = commBroker;
-	        this.me = this;
-	        this.slideLeft = 'notes5';
-	        this.slideRight = 'notes3';
+	var CartActions = __webpack_require__(__webpack_module_template_argument_0__);
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = function (state, action) {
+	    if (state === void 0) { state = []; }
+	    if (action === void 0) { action = {}; }
+	    switch (action.type) {
+	        case CartActions.ADD_TO_CART:
+	            return state.concat([action.id]);
+	        case CartActions.REMOVE_FROM_CART:
+	            return state.filter(function (id) { return id !== action.id; });
+	        default:
+	            return state;
 	    }
-	    Notes4 = __decorate([
-	        core_1.Component({
-	            selector: 'Notes4',
-	            template: " <button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left \"></span>\n                </button>\n                <button type=\"button\" (click)=\"onNext($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-right\"></span>\n                </button>\n                <hr/>\n                <small>I am notes4 component</small>\n                <ng-content></ng-content>"
-	        }), 
-	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
-	    ], Notes4);
-	    return Notes4;
-	})(NotesBase_1.NotesBase);
-	exports.Notes4 = Notes4;
+	};
 
 
 /***/ },
 /* 842 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(1);
-	var Sliderpanel_1 = __webpack_require__(15);
-	var CommBroker_1 = __webpack_require__(7);
-	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var Notes5 = (function (_super) {
-	    __extends(Notes5, _super);
-	    function Notes5(sliderPanel, commBroker) {
-	        _super.call(this, sliderPanel, commBroker);
-	        this.sliderPanel = sliderPanel;
-	        this.commBroker = commBroker;
-	        this.me = this;
-	        this.slideRight = 'notes4';
+	var FilmActions = __webpack_require__(__webpack_module_template_argument_0__);
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = function (state, action) {
+	    if (state === void 0) { state = []; }
+	    if (action === void 0) { action = {}; }
+	    switch (action.type) {
+	        case FilmActions.REQUEST_FILMS:
+	            return Object.assign({}, state, { isFetchingFilms: true });
+	        case FilmActions.RECEIVE_FILMS:
+	            return Object.assign({}, state, { isFetchingFilms: false, list: action.films });
+	        case FilmActions.REQUEST_FILM:
+	            return Object.assign({}, state, { isFetchingFilm: true });
+	        case FilmActions.RECEIVE_FILM:
+	            return Object.assign({}, state, { isFetchingFilm: false, currentFilm: action.film });
+	        case FilmActions.RECEIVE_NUMBER_OF_FILMS:
+	            return Object.assign({}, state, { count: action.count });
+	        case FilmActions.CURRENT_FILMS:
+	            return Object.assign({}, state, { current: action.currentIndex });
+	        default:
+	            return state;
 	    }
-	    Notes5 = __decorate([
-	        core_1.Component({
-	            selector: 'Notes5',
-	            template: "<button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left \"></span>\n                </button>\n                <hr/>\n                <small>I am notes5 component</small>\n                <ng-content></ng-content>"
-	        }), 
-	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
-	    ], Notes5);
-	    return Notes5;
-	})(NotesBase_1.NotesBase);
-	exports.Notes5 = Notes5;
+	};
 
 
 /***/ },
 /* 843 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(1);
-	var Sliderpanel_1 = __webpack_require__(15);
-	var CommBroker_1 = __webpack_require__(7);
-	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var Notes5 = (function (_super) {
-	    __extends(Notes5, _super);
-	    function Notes5(sliderPanel, commBroker) {
-	        _super.call(this, sliderPanel, commBroker);
-	        this.sliderPanel = sliderPanel;
-	        this.commBroker = commBroker;
-	        this.me = this;
-	        this.slideRight = 'notes4';
+	var FilmActions = __webpack_require__(__webpack_module_template_argument_0__);
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = function (state, action) {
+	    if (state === void 0) { state = []; }
+	    if (action === void 0) { action = {}; }
+	    switch (action.type) {
+	        case FilmActions.REQUEST_FILMS:
+	            return Object.assign({}, state, { isFetchingFilms: true });
+	        case FilmActions.RECEIVE_FILMS:
+	            return Object.assign({}, state, { isFetchingFilms: false, list: action.films });
+	        case FilmActions.REQUEST_FILM:
+	            return Object.assign({}, state, { isFetchingFilm: true });
+	        case FilmActions.RECEIVE_FILM:
+	            return Object.assign({}, state, { isFetchingFilm: false, currentFilm: action.film });
+	        case FilmActions.RECEIVE_NUMBER_OF_FILMS:
+	            return Object.assign({}, state, { count: action.count });
+	        case FilmActions.CURRENT_FILMS:
+	            return Object.assign({}, state, { current: action.currentIndex });
+	        default:
+	            return state;
 	    }
-	    Notes5 = __decorate([
-	        core_1.Component({
-	            selector: 'Notes5',
-	            template: "<button type=\"button\" (click)=\"onPrev($event)\" class=\"btn btn-default btn-sm\">\n                    <span class=\"fa fa-arrow-left \"></span>\n                </button>\n                <hr/>\n                <small>I am notes5 component</small>\n                <ng-content></ng-content>"
-	        }), 
-	        __metadata('design:paramtypes', [Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
-	    ], Notes5);
-	    return Notes5;
-	})(NotesBase_1.NotesBase);
-	exports.Notes5 = Notes5;
+	};
 
 
 /***/ },
 /* 844 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(1);
-	var Conts_1 = __webpack_require__(11);
-	var CommBroker_1 = __webpack_require__(7);
-	var Notes1Props_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var Properties = (function () {
-	    function Properties(commBroker) {
-	        this.commBroker = commBroker;
-	        this.commBroker.setService(Conts_1.Consts.Services().Properties, this);
+	var PartActions = __webpack_require__(__webpack_module_template_argument_0__);
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = function (state, action) {
+	    if (state === void 0) { state = {}; }
+	    if (action === void 0) { action = {}; }
+	    switch (action.type) {
+	        case PartActions.ADD_PART:
+	            return { id: action.id, name: action.name };
+	        default:
+	            return state;
 	    }
-	    Properties.prototype.setPropView = function (value) {
-	        this.value = value;
-	    };
-	    Properties.prototype.ngOnDestroy = function () {
-	    };
-	    Properties = __decorate([
-	        core_1.Component({
-	            selector: 'Properties',
-	            directives: [Notes1Props_1.Notes1Props],
-	            template: "\n                <h4>Properties</h4>\n                <hr/>\n                 <ul [ngSwitch]=\"value\">\n                  <li *ngSwitchWhen=\"'notes1'\">\n                    <Notes1Props></Notes1Props>\n                  </li>\n                  <li *ngSwitchWhen=\"'notes2'\"><h1>Notes 2</h1></li>\n                  <li *ngSwitchWhen=\"'notes3'\"><h1>Notes 3</h1></li>\n                  <li *ngSwitchWhen=\"'notes4'\"><h1>Notes 4</h1></li>\n                  <li *ngSwitchWhen=\"'notes5'\"><h1>Notes 5</h1></li>\n                  <li *ngSwitchWhen=\"'Digg'\"><h1>Digg</h1></li>\n                  <li *ngSwitchWhen=\"'Weather'\"><h1>Weather</h1></li>\n                  <li *ngSwitchWhen=\"'Contact'\"><h1>Contact</h1></li>\n                  <li *ngSwitchWhen=\"'Logout'\"><h1>Logout</h1></li>\n                </ul>\n                <ng-content></ng-content>\n              "
-	        }), 
-	        __metadata('design:paramtypes', [CommBroker_1.CommBroker])
-	    ], Properties);
-	    return Properties;
-	})();
-	exports.Properties = Properties;
+	};
 
 
 /***/ },
 /* 845 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(1);
-	var Conts_1 = __webpack_require__(11);
-	var CommBroker_1 = __webpack_require__(7);
-	var Notes1Props_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var Properties = (function () {
-	    function Properties(commBroker) {
-	        this.commBroker = commBroker;
-	        this.commBroker.setService(Conts_1.Consts.Services().Properties, this);
+	var PartActions = __webpack_require__(__webpack_module_template_argument_0__);
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = function (state, action) {
+	    if (state === void 0) { state = {}; }
+	    if (action === void 0) { action = {}; }
+	    switch (action.type) {
+	        case PartActions.ADD_PART:
+	            return { id: action.id, name: action.name };
+	        default:
+	            return state;
 	    }
-	    Properties.prototype.setPropView = function (value) {
-	        this.value = value;
-	    };
-	    Properties.prototype.ngOnDestroy = function () {
-	    };
-	    Properties = __decorate([
-	        core_1.Component({
-	            selector: 'Properties',
-	            directives: [Notes1Props_1.Notes1Props],
-	            template: "\n                <h4>Properties</h4>\n                <hr/>\n                 <ul [ngSwitch]=\"value\">\n                  <li *ngSwitchWhen=\"'notes1'\">\n                    <Notes1Props></Notes1Props>\n                  </li>\n                  <li *ngSwitchWhen=\"'notes2'\"><h1>Notes 2</h1></li>\n                  <li *ngSwitchWhen=\"'notes3'\"><h1>Notes 3</h1></li>\n                  <li *ngSwitchWhen=\"'notes4'\"><h1>Notes 4</h1></li>\n                  <li *ngSwitchWhen=\"'notes5'\"><h1>Notes 5</h1></li>\n                  <li *ngSwitchWhen=\"'Digg'\"><h1>Digg</h1></li>\n                  <li *ngSwitchWhen=\"'Weather'\"><h1>Weather</h1></li>\n                  <li *ngSwitchWhen=\"'Contact'\"><h1>Contact</h1></li>\n                  <li *ngSwitchWhen=\"'Logout'\"><h1>Logout</h1></li>\n                </ul>\n                <ng-content></ng-content>\n              "
-	        }), 
-	        __metadata('design:paramtypes', [CommBroker_1.CommBroker])
-	    ], Properties);
-	    return Properties;
-	})();
-	exports.Properties = Properties;
+	};
 
 
 /***/ },
 /* 846 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__) {
 
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(1);
-	var Conts_1 = __webpack_require__(11);
-	var WeatherService_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var SortableHeader_1 = __webpack_require__(__webpack_module_template_argument_1__);
-	var common_1 = __webpack_require__(12);
-	var OrderBy_1 = __webpack_require__(207);
-	var common_2 = __webpack_require__(12);
-	__webpack_require__(24);
-	__webpack_require__(114);
-	__webpack_require__(45);
-	__webpack_require__(112);
-	__webpack_require__(21);
-	__webpack_require__(24);
-	var CommBroker_1 = __webpack_require__(7);
-	var Weather = (function () {
-	    function Weather(weatherService, commBroker) {
-	        this.weatherService = weatherService;
-	        this.commBroker = commBroker;
-	        this.zipControl = new common_1.Control();
-	        this.sort = { field: null, desc: false };
-	        this.listenWeatherInput();
-	        this.commBroker.getService(Conts_1.Consts.Services().Properties).setPropView('Weather');
+	var PartActions = __webpack_require__(__webpack_module_template_argument_0__);
+	var part_reducer_1 = __webpack_require__(__webpack_module_template_argument_1__);
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = function (state, action) {
+	    if (state === void 0) { state = []; }
+	    if (action === void 0) { action = {}; }
+	    switch (action.type) {
+	        case PartActions.ADD_PART:
+	            return state.concat([part_reducer_1.default(null, action)]);
+	        default:
+	            return state;
 	    }
-	    Weather.prototype.ngAfterViewInit = function () {
-	        this.zipControl.updateValue('91301');
-	    };
-	    Weather.prototype.listenWeatherInput = function () {
-	        var _this = this;
-	        return this.weatherItems = this.zipControl.valueChanges
-	            .debounceTime(400)
-	            .distinctUntilChanged()
-	            .filter(function (zip) {
-	            return zip.length > 3;
-	        }).switchMap(function (zip) {
-	            return _this.weatherService.search(zip + "/1");
-	        });
-	    };
-	    Weather = __decorate([
-	        core_1.Component({
-	            selector: 'Weather',
-	            providers: [WeatherService_1.WeatherService, SortableHeader_1.SortableHeader],
-	            changeDetection: core_1.ChangeDetectionStrategy.OnPushObserve,
-	            pipes: [OrderBy_1.OrderBy],
-	            directives: [common_2.COMMON_DIRECTIVES, SortableHeader_1.SortableHeader],
-	            styles: ["input {margin: 20px; width: 50%}"],
-	            template: "\n    <small>I am a weather component</small>\n    <input type=\"text\" class=\"form-control\" placeholder=\"enter city or zip code\" [ngFormControl]=\"zipControl\">\n    <table class=\"table\">\n      <thead>\n        <tr>\n          <th>day</th>\n          <th>icon</th>\n          <th sortableHeader=\"maxtempF\" [sort]=\"sort\">high</th>\n          <th sortableHeader=\"mintempF\" [sort]=\"sort\">low</th>\n        </tr>\n      </thead>\n      <tbody>\n      <!-- no need to subscribe to observable since async does this for us -->\n        <tr *ngFor=\"#item of weatherItems | async | OrderBy:sort.field:sort.desc\">\n          <td>{{ item.day }}</td>\n          <td><img src=\"{{ item.iconPath }}\" style=\"width: 40px; height: 40px\"/></td>\n          <td>{{ item.maxtempF }}</td>\n          <td>{{ item.mintempF }}</td>\n          <!-- <td [innerHtml]=\"item.day\"></td> -->\n        </tr>\n      </tbody>\n    </table>\n  ",
-	        }), 
-	        __metadata('design:paramtypes', [WeatherService_1.WeatherService, CommBroker_1.CommBroker])
-	    ], Weather);
-	    return Weather;
-	})();
-	exports.Weather = Weather;
+	};
 
 
 /***/ },
 /* 847 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__) {
 
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(1);
-	var Conts_1 = __webpack_require__(11);
-	var WeatherService_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var SortableHeader_1 = __webpack_require__(__webpack_module_template_argument_1__);
-	var common_1 = __webpack_require__(12);
-	var OrderBy_1 = __webpack_require__(207);
-	var common_2 = __webpack_require__(12);
-	__webpack_require__(24);
-	__webpack_require__(114);
-	__webpack_require__(45);
-	__webpack_require__(112);
-	__webpack_require__(21);
-	__webpack_require__(24);
-	var CommBroker_1 = __webpack_require__(7);
-	var Weather = (function () {
-	    function Weather(weatherService, commBroker) {
-	        this.weatherService = weatherService;
-	        this.commBroker = commBroker;
-	        this.zipControl = new common_1.Control();
-	        this.sort = { field: null, desc: false };
-	        this.listenWeatherInput();
-	        this.commBroker.getService(Conts_1.Consts.Services().Properties).setPropView('Weather');
+	var PartActions = __webpack_require__(__webpack_module_template_argument_0__);
+	var part_reducer_1 = __webpack_require__(__webpack_module_template_argument_1__);
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = function (state, action) {
+	    if (state === void 0) { state = []; }
+	    if (action === void 0) { action = {}; }
+	    switch (action.type) {
+	        case PartActions.ADD_PART:
+	            return state.concat([part_reducer_1.default(null, action)]);
+	        default:
+	            return state;
 	    }
-	    Weather.prototype.ngAfterViewInit = function () {
-	        this.zipControl.updateValue('91301');
-	    };
-	    Weather.prototype.listenWeatherInput = function () {
-	        var _this = this;
-	        return this.weatherItems = this.zipControl.valueChanges
-	            .debounceTime(400)
-	            .distinctUntilChanged()
-	            .filter(function (zip) {
-	            return zip.length > 3;
-	        }).switchMap(function (zip) {
-	            return _this.weatherService.search(zip + "/1");
-	        });
-	    };
-	    Weather = __decorate([
-	        core_1.Component({
-	            selector: 'Weather',
-	            providers: [WeatherService_1.WeatherService, SortableHeader_1.SortableHeader],
-	            changeDetection: core_1.ChangeDetectionStrategy.OnPushObserve,
-	            pipes: [OrderBy_1.OrderBy],
-	            directives: [common_2.COMMON_DIRECTIVES, SortableHeader_1.SortableHeader],
-	            styles: ["input {margin: 20px; width: 50%}"],
-	            template: "\n    <small>I am a weather component</small>\n    <input type=\"text\" class=\"form-control\" placeholder=\"enter city or zip code\" [ngFormControl]=\"zipControl\">\n    <table class=\"table\">\n      <thead>\n        <tr>\n          <th>day</th>\n          <th>icon</th>\n          <th sortableHeader=\"maxtempF\" [sort]=\"sort\">high</th>\n          <th sortableHeader=\"mintempF\" [sort]=\"sort\">low</th>\n        </tr>\n      </thead>\n      <tbody>\n      <!-- no need to subscribe to observable since async does this for us -->\n        <tr *ngFor=\"#item of weatherItems | async | OrderBy:sort.field:sort.desc\">\n          <td>{{ item.day }}</td>\n          <td><img src=\"{{ item.iconPath }}\" style=\"width: 40px; height: 40px\"/></td>\n          <td>{{ item.maxtempF }}</td>\n          <td>{{ item.mintempF }}</td>\n          <!-- <td [innerHtml]=\"item.day\"></td> -->\n        </tr>\n      </tbody>\n    </table>\n  ",
-	        }), 
-	        __metadata('design:paramtypes', [WeatherService_1.WeatherService, CommBroker_1.CommBroker])
-	    ], Weather);
-	    return Weather;
-	})();
-	exports.Weather = Weather;
+	};
 
 
 /***/ },
 /* 848 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__) {
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(1);
-	var film_actions_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var film_selection_view_1 = __webpack_require__(__webpack_module_template_argument_1__);
-	var film_view_1 = __webpack_require__(__webpack_module_template_argument_2__);
-	var CommBroker_1 = __webpack_require__(7);
-	var Consts = __webpack_require__(__webpack_module_template_argument_3__);
-	var FilmsComponent = (function () {
-	    function FilmsComponent(commBroker, _filmActions) {
-	        this.commBroker = commBroker;
-	        this._filmActions = _filmActions;
-	        this.currentFilm = null;
-	        this.isFetchingCurrentFilm = false;
-	        var self = this;
-	        this._appStore = commBroker.getService(Consts.APP_STORE);
-	        this._appStore.subscribe(function (state) {
-	            self.filmsCount = state.films.count;
-	            self.currentFilm = state.films.currentFilm;
-	            self.isFetchingCurrentFilm = state.films.isFetchingFilm;
-	        });
-	        this._appStore.dispatch(_filmActions.fetchFilms());
+	var UserActions = __webpack_require__(__webpack_module_template_argument_0__);
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = function (state, action) {
+	    if (state === void 0) { state = {}; }
+	    if (action === void 0) { action = {}; }
+	    switch (action.type) {
+	        case UserActions.REQUEST_USERS:
+	            return Object.assign({}, state, { isFetching: true });
+	        case UserActions.RECEIVE_USERS:
+	            return Object.assign({}, state, { isFetching: false, list: action.users, updated: action.updated });
+	        case UserActions.CURRENT_USER:
+	            return Object.assign({}, state, { current: action.current });
+	        case UserActions.SET_FILM_FILTER:
+	            return Object.assign({}, state, { filmFilter: action.filmFilter });
+	        default:
+	            return state;
 	    }
-	    FilmsComponent.prototype.setCurrentFilm = function (index) {
-	        this._appStore.dispatch(this._filmActions.setCurrentFilm(index));
-	        this._appStore.dispatch(this._filmActions.fetchFilm(index));
-	    };
-	    FilmsComponent = __decorate([
-	        core_1.Component({
-	            selector: 'films-component',
-	            template: "\n        <h3>Films</h3>\n        <film-selection [count]=\"filmsCount\" (current)=\"setCurrentFilm($event)\"></film-selection>\n        <div [ngClass]=\"{'text-muted':isFetchingCurrentFilm,'text-primary':!isFetchingCurrentFilm}\" style=\"margin-top:20px;\">\n            <film [data]=\"currentFilm\" [loading]=\"isFetchingCurrentFilm\"></film>\n        </div>\n\n    ",
-	            directives: [film_selection_view_1.FilmSelectionView, film_view_1.FilmView]
-	        }), 
-	        __metadata('design:paramtypes', [CommBroker_1.CommBroker, film_actions_1.FilmActions])
-	    ], FilmsComponent);
-	    return FilmsComponent;
-	})();
-	exports.FilmsComponent = FilmsComponent;
+	};
 
 
 /***/ },
 /* 849 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__) {
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(1);
-	var film_actions_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var film_selection_view_1 = __webpack_require__(__webpack_module_template_argument_1__);
-	var film_view_1 = __webpack_require__(__webpack_module_template_argument_2__);
-	var CommBroker_1 = __webpack_require__(7);
-	var Consts = __webpack_require__(__webpack_module_template_argument_3__);
-	var FilmsComponent = (function () {
-	    function FilmsComponent(commBroker, _filmActions) {
-	        this.commBroker = commBroker;
-	        this._filmActions = _filmActions;
-	        this.currentFilm = null;
-	        this.isFetchingCurrentFilm = false;
-	        var self = this;
-	        this._appStore = commBroker.getService(Consts.APP_STORE);
-	        this._appStore.subscribe(function (state) {
-	            self.filmsCount = state.films.count;
-	            self.currentFilm = state.films.currentFilm;
-	            self.isFetchingCurrentFilm = state.films.isFetchingFilm;
-	        });
-	        this._appStore.dispatch(_filmActions.fetchFilms());
+	var UserActions = __webpack_require__(__webpack_module_template_argument_0__);
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = function (state, action) {
+	    if (state === void 0) { state = {}; }
+	    if (action === void 0) { action = {}; }
+	    switch (action.type) {
+	        case UserActions.REQUEST_USERS:
+	            return Object.assign({}, state, { isFetching: true });
+	        case UserActions.RECEIVE_USERS:
+	            return Object.assign({}, state, { isFetching: false, list: action.users, updated: action.updated });
+	        case UserActions.CURRENT_USER:
+	            return Object.assign({}, state, { current: action.current });
+	        case UserActions.SET_FILM_FILTER:
+	            return Object.assign({}, state, { filmFilter: action.filmFilter });
+	        default:
+	            return state;
 	    }
-	    FilmsComponent.prototype.setCurrentFilm = function (index) {
-	        this._appStore.dispatch(this._filmActions.setCurrentFilm(index));
-	        this._appStore.dispatch(this._filmActions.fetchFilm(index));
-	    };
-	    FilmsComponent = __decorate([
-	        core_1.Component({
-	            selector: 'films-component',
-	            template: "\n        <h3>Films</h3>\n        <film-selection [count]=\"filmsCount\" (current)=\"setCurrentFilm($event)\"></film-selection>\n        <div [ngClass]=\"{'text-muted':isFetchingCurrentFilm,'text-primary':!isFetchingCurrentFilm}\" style=\"margin-top:20px;\">\n            <film [data]=\"currentFilm\" [loading]=\"isFetchingCurrentFilm\"></film>\n        </div>\n\n    ",
-	            directives: [film_selection_view_1.FilmSelectionView, film_view_1.FilmView]
-	        }), 
-	        __metadata('design:paramtypes', [CommBroker_1.CommBroker, film_actions_1.FilmActions])
-	    ], FilmsComponent);
-	    return FilmsComponent;
-	})();
-	exports.FilmsComponent = FilmsComponent;
+	};
 
 
 /***/ },
 /* 850 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__, __webpack_module_template_argument_5__) {
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__, __webpack_module_template_argument_5__, __webpack_module_template_argument_6__, __webpack_module_template_argument_7__, __webpack_module_template_argument_8__, __webpack_module_template_argument_9__, __webpack_module_template_argument_10__, __webpack_module_template_argument_11__, __webpack_module_template_argument_12__) {
 
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
 	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -21115,53 +21399,55 @@ webpackJsonp([1],[
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var cart_actions_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var part_actions_1 = __webpack_require__(__webpack_module_template_argument_1__);
-	var parts_view_1 = __webpack_require__(__webpack_module_template_argument_2__);
-	var cart_view_1 = __webpack_require__(__webpack_module_template_argument_3__);
-	var add_part_view_1 = __webpack_require__(__webpack_module_template_argument_4__);
-	var reselect_1 = __webpack_require__(32);
+	var redux_1 = __webpack_require__(180);
+	var thunk = __webpack_require__(179);
+	var parts_reducer_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var cart_reducer_1 = __webpack_require__(__webpack_module_template_argument_1__);
+	var films_reducer_1 = __webpack_require__(__webpack_module_template_argument_2__);
+	var users_reducer_1 = __webpack_require__(__webpack_module_template_argument_3__);
+	var angular2_redux_util_1 = __webpack_require__(20);
+	var shopping_component_1 = __webpack_require__(__webpack_module_template_argument_4__);
 	var CommBroker_1 = __webpack_require__(7);
-	var Consts = __webpack_require__(__webpack_module_template_argument_5__);
-	var partsInCartSelector = reselect_1.createSelector(function (state) { return state.cart; }, function (state) { return state.parts; }, function (cart, parts) {
-	    var partsById = parts.reduce(function (map, part) { return (map[part.id] = part) && map; }, {});
-	    return cart.map(function (id) { return partsById[id]; });
-	});
-	var ShoppingComponent = (function () {
-	    function ShoppingComponent(commBroker, partActions, cartActions) {
-	        var _this = this;
-	        this.parts = [];
-	        this.partsInCart = [];
-	        this.appStore = commBroker.getService(Consts.APP_STORE);
-	        this.addPart = partActions.createDispatcher(this.appStore, partActions.addPart);
-	        this.addPartToCart = cartActions.createDispatcher(this.appStore, cartActions.addToCart);
-	        this.removePartFromCart = cartActions.createDispatcher(this.appStore, cartActions.removeFromCart);
-	        this.appStore.subscribe(function (state) {
-	            _this.parts = state.parts;
-	            _this.partsInCart = partsInCartSelector(state);
-	        });
-	        ShoppingComponent.createInitialSetOfParts(this.appStore, partActions);
+	var part_actions_1 = __webpack_require__(__webpack_module_template_argument_5__);
+	var cart_actions_1 = __webpack_require__(__webpack_module_template_argument_6__);
+	var Consts = __webpack_require__(__webpack_module_template_argument_7__);
+	var admin_component_1 = __webpack_require__(__webpack_module_template_argument_8__);
+	var films_component_1 = __webpack_require__(__webpack_module_template_argument_9__);
+	var user_actions_1 = __webpack_require__(__webpack_module_template_argument_10__);
+	var film_actions_1 = __webpack_require__(__webpack_module_template_argument_11__);
+	var appStoreFactory = function () {
+	    var reducers = redux_1.combineReducers({ parts: parts_reducer_1.default, cart: cart_reducer_1.default, films: films_reducer_1.default, users: users_reducer_1.default });
+	    var middlewareEnhancer = redux_1.applyMiddleware(thunk, angular2_redux_util_1.LoggerMiddleware);
+	    var isDebug = window.devToolsExtension;
+	    var applyDevTools = function () { return isDebug ? window.devToolsExtension() : function (f) { return f; }; };
+	    var enhancers = redux_1.compose(middlewareEnhancer, applyDevTools());
+	    var createStoreWithEnhancers = enhancers(redux_1.createStore);
+	    var reduxAppStore = createStoreWithEnhancers(reducers);
+	    return new angular2_redux_util_1.AppStore(reduxAppStore);
+	};
+	var Newsboard = (function () {
+	    function Newsboard(commBroker) {
+	        this.commBroker = commBroker;
+	        var reduxAppStore = appStoreFactory();
+	        this.commBroker.setService(Consts.APP_STORE, reduxAppStore);
 	    }
-	    ShoppingComponent.createInitialSetOfParts = function (appStore, partActions) {
-	        appStore.dispatch(partActions.addPart("Lightsaber"));
-	        appStore.dispatch(partActions.addPart("X-wing diecast"));
-	    };
-	    ShoppingComponent = __decorate([
+	    Newsboard = __decorate([
 	        core_1.Component({
-	            selector: 'shopping',
-	            template: "\n        <h3>Parts</h3>\n        <add-part (add)=\"addPart($event)\"></add-part>\n        <parts [parts]=\"parts\" [partsInCart]=\"partsInCart\" (addToCart)=\"addPartToCart($event)\"></parts>\n        <hr/>\n        <h3>Cart</h3>\n        <cart [parts]=\"partsInCart\" (removeFromCart)=\"removePartFromCart($event)\"></cart>\n    ",
-	            directives: [parts_view_1.PartsView, cart_view_1.CartView, add_part_view_1.AddPartsView]
+	            selector: 'Newsboard',
+	            directives: [shopping_component_1.ShoppingComponent, admin_component_1.AdminComponent, films_component_1.FilmsComponent],
+	            template: __webpack_require__(__webpack_module_template_argument_12__),
+	            providers: [part_actions_1.PartActions, cart_actions_1.CartActions, part_actions_1.PartActions, user_actions_1.UserActions, film_actions_1.FilmActions]
 	        }), 
-	        __metadata('design:paramtypes', [CommBroker_1.CommBroker, part_actions_1.PartActions, cart_actions_1.CartActions])
-	    ], ShoppingComponent);
-	    return ShoppingComponent;
+	        __metadata('design:paramtypes', [CommBroker_1.CommBroker])
+	    ], Newsboard);
+	    return Newsboard;
 	})();
-	exports.ShoppingComponent = ShoppingComponent;
+	exports.Newsboard = Newsboard;
 
 
 /***/ },
 /* 851 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__, __webpack_module_template_argument_5__) {
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__, __webpack_module_template_argument_5__, __webpack_module_template_argument_6__, __webpack_module_template_argument_7__, __webpack_module_template_argument_8__, __webpack_module_template_argument_9__, __webpack_module_template_argument_10__, __webpack_module_template_argument_11__, __webpack_module_template_argument_12__) {
 
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
 	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -21173,706 +21459,370 @@ webpackJsonp([1],[
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var cart_actions_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var part_actions_1 = __webpack_require__(__webpack_module_template_argument_1__);
-	var parts_view_1 = __webpack_require__(__webpack_module_template_argument_2__);
-	var cart_view_1 = __webpack_require__(__webpack_module_template_argument_3__);
-	var add_part_view_1 = __webpack_require__(__webpack_module_template_argument_4__);
-	var reselect_1 = __webpack_require__(32);
+	var redux_1 = __webpack_require__(180);
+	var thunk = __webpack_require__(179);
+	var parts_reducer_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var cart_reducer_1 = __webpack_require__(__webpack_module_template_argument_1__);
+	var films_reducer_1 = __webpack_require__(__webpack_module_template_argument_2__);
+	var users_reducer_1 = __webpack_require__(__webpack_module_template_argument_3__);
+	var angular2_redux_util_1 = __webpack_require__(20);
+	var shopping_component_1 = __webpack_require__(__webpack_module_template_argument_4__);
 	var CommBroker_1 = __webpack_require__(7);
-	var Consts = __webpack_require__(__webpack_module_template_argument_5__);
-	var partsInCartSelector = reselect_1.createSelector(function (state) { return state.cart; }, function (state) { return state.parts; }, function (cart, parts) {
-	    var partsById = parts.reduce(function (map, part) { return (map[part.id] = part) && map; }, {});
-	    return cart.map(function (id) { return partsById[id]; });
-	});
-	var ShoppingComponent = (function () {
-	    function ShoppingComponent(commBroker, partActions, cartActions) {
-	        var _this = this;
-	        this.parts = [];
-	        this.partsInCart = [];
-	        this.appStore = commBroker.getService(Consts.APP_STORE);
-	        this.addPart = partActions.createDispatcher(this.appStore, partActions.addPart);
-	        this.addPartToCart = cartActions.createDispatcher(this.appStore, cartActions.addToCart);
-	        this.removePartFromCart = cartActions.createDispatcher(this.appStore, cartActions.removeFromCart);
-	        this.appStore.subscribe(function (state) {
-	            _this.parts = state.parts;
-	            _this.partsInCart = partsInCartSelector(state);
-	        });
-	        ShoppingComponent.createInitialSetOfParts(this.appStore, partActions);
+	var part_actions_1 = __webpack_require__(__webpack_module_template_argument_5__);
+	var cart_actions_1 = __webpack_require__(__webpack_module_template_argument_6__);
+	var Consts = __webpack_require__(__webpack_module_template_argument_7__);
+	var admin_component_1 = __webpack_require__(__webpack_module_template_argument_8__);
+	var films_component_1 = __webpack_require__(__webpack_module_template_argument_9__);
+	var user_actions_1 = __webpack_require__(__webpack_module_template_argument_10__);
+	var film_actions_1 = __webpack_require__(__webpack_module_template_argument_11__);
+	var appStoreFactory = function () {
+	    var reducers = redux_1.combineReducers({ parts: parts_reducer_1.default, cart: cart_reducer_1.default, films: films_reducer_1.default, users: users_reducer_1.default });
+	    var middlewareEnhancer = redux_1.applyMiddleware(thunk, angular2_redux_util_1.LoggerMiddleware);
+	    var isDebug = window.devToolsExtension;
+	    var applyDevTools = function () { return isDebug ? window.devToolsExtension() : function (f) { return f; }; };
+	    var enhancers = redux_1.compose(middlewareEnhancer, applyDevTools());
+	    var createStoreWithEnhancers = enhancers(redux_1.createStore);
+	    var reduxAppStore = createStoreWithEnhancers(reducers);
+	    return new angular2_redux_util_1.AppStore(reduxAppStore);
+	};
+	var Newsboard = (function () {
+	    function Newsboard(commBroker) {
+	        this.commBroker = commBroker;
+	        var reduxAppStore = appStoreFactory();
+	        this.commBroker.setService(Consts.APP_STORE, reduxAppStore);
 	    }
-	    ShoppingComponent.createInitialSetOfParts = function (appStore, partActions) {
-	        appStore.dispatch(partActions.addPart("Lightsaber"));
-	        appStore.dispatch(partActions.addPart("X-wing diecast"));
-	    };
-	    ShoppingComponent = __decorate([
+	    Newsboard = __decorate([
 	        core_1.Component({
-	            selector: 'shopping',
-	            template: "\n        <h3>Parts</h3>\n        <add-part (add)=\"addPart($event)\"></add-part>\n        <parts [parts]=\"parts\" [partsInCart]=\"partsInCart\" (addToCart)=\"addPartToCart($event)\"></parts>\n        <hr/>\n        <h3>Cart</h3>\n        <cart [parts]=\"partsInCart\" (removeFromCart)=\"removePartFromCart($event)\"></cart>\n    ",
-	            directives: [parts_view_1.PartsView, cart_view_1.CartView, add_part_view_1.AddPartsView]
+	            selector: 'Newsboard',
+	            directives: [shopping_component_1.ShoppingComponent, admin_component_1.AdminComponent, films_component_1.FilmsComponent],
+	            template: __webpack_require__(__webpack_module_template_argument_12__),
+	            providers: [part_actions_1.PartActions, cart_actions_1.CartActions, part_actions_1.PartActions, user_actions_1.UserActions, film_actions_1.FilmActions]
 	        }), 
-	        __metadata('design:paramtypes', [CommBroker_1.CommBroker, part_actions_1.PartActions, cart_actions_1.CartActions])
-	    ], ShoppingComponent);
-	    return ShoppingComponent;
+	        __metadata('design:paramtypes', [CommBroker_1.CommBroker])
+	    ], Newsboard);
+	    return Newsboard;
 	})();
-	exports.ShoppingComponent = ShoppingComponent;
+	exports.Newsboard = Newsboard;
 
 
 /***/ },
 /* 852 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__) {
 
-	var CartActions = __webpack_require__(__webpack_module_template_argument_0__);
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = function (state, action) {
-	    if (state === void 0) { state = []; }
-	    if (action === void 0) { action = {}; }
-	    switch (action.type) {
-	        case CartActions.ADD_TO_CART:
-	            return state.concat([action.id]);
-	        case CartActions.REMOVE_FROM_CART:
-	            return state.filter(function (id) { return id !== action.id; });
-	        default:
-	            return state;
-	    }
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var user_actions_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var users_view_1 = __webpack_require__(__webpack_module_template_argument_1__);
+	var user_view_1 = __webpack_require__(__webpack_module_template_argument_2__);
+	var reselect_1 = __webpack_require__(32);
+	var CommBroker_1 = __webpack_require__(7);
+	var Consts = __webpack_require__(__webpack_module_template_argument_3__);
+	var AdminComponent = (function () {
+	    function AdminComponent(commBroker, userActions) {
+	        this.usersToShow = null;
+	        this.currentUser = null;
+	        this.filmFilter = null;
+	        var self = this;
+	        var appStore = commBroker.getService(Consts.APP_STORE);
+	        this.setCurrentUser = userActions.createDispatcher(appStore, userActions.setCurrentUser);
+	        this.setFilmFilter = userActions.createDispatcher(appStore, userActions.setFilmFilter);
+	        var usersToShowSelector = AdminComponent.createUsersToShowSelector();
+	        appStore.subscribe(function (state) {
+	            self.usersToShow = usersToShowSelector(state);
+	            self.currentUser = state.users.current;
+	            self.filmFilter = state.users.filmFilter;
+	        });
+	        appStore.dispatch(userActions.fetchUsers());
+	    }
+	    AdminComponent.createUsersToShowSelector = function () {
+	        var currentFilmSelector = reselect_1.createSelector(function (state) { return state.users.filmFilter; }, function (state) { return state.films.currentFilm; }, function (filmFilter, currentFilm) { return filmFilter && currentFilm ? currentFilm : null; });
+	        return reselect_1.createSelector(function (state) { return state.users.list; }, currentFilmSelector, function (users, currentFilm) { return currentFilm ? users.filter(AdminComponent.getFilter(currentFilm)) : users; });
+	    };
+	    ;
+	    AdminComponent.getFilter = function (film) {
+	        var ids = film.characters
+	            .map(function (url) { return AdminComponent.getId(url); })
+	            .reduce(function (idsMap, id) { return (idsMap[id] = true) && idsMap; }, {});
+	        return function (user) { return ids[AdminComponent.getId(user.url)]; };
+	    };
+	    ;
+	    AdminComponent.getId = function (url) {
+	        return url.replace(/[a-z\/\.\:]*/g, "");
+	    };
+	    ;
+	    AdminComponent = __decorate([
+	        core_1.Component({
+	            selector: 'admin',
+	            template: __webpack_require__(__webpack_module_template_argument_4__),
+	            directives: [users_view_1.UsersView, user_view_1.UserView]
+	        }), 
+	        __metadata('design:paramtypes', [CommBroker_1.CommBroker, user_actions_1.UserActions])
+	    ], AdminComponent);
+	    return AdminComponent;
+	})();
+	exports.AdminComponent = AdminComponent;
 
 
 /***/ },
 /* 853 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__) {
 
-	var CartActions = __webpack_require__(__webpack_module_template_argument_0__);
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = function (state, action) {
-	    if (state === void 0) { state = []; }
-	    if (action === void 0) { action = {}; }
-	    switch (action.type) {
-	        case CartActions.ADD_TO_CART:
-	            return state.concat([action.id]);
-	        case CartActions.REMOVE_FROM_CART:
-	            return state.filter(function (id) { return id !== action.id; });
-	        default:
-	            return state;
-	    }
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var user_actions_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var users_view_1 = __webpack_require__(__webpack_module_template_argument_1__);
+	var user_view_1 = __webpack_require__(__webpack_module_template_argument_2__);
+	var reselect_1 = __webpack_require__(32);
+	var CommBroker_1 = __webpack_require__(7);
+	var Consts = __webpack_require__(__webpack_module_template_argument_3__);
+	var AdminComponent = (function () {
+	    function AdminComponent(commBroker, userActions) {
+	        this.usersToShow = null;
+	        this.currentUser = null;
+	        this.filmFilter = null;
+	        var self = this;
+	        var appStore = commBroker.getService(Consts.APP_STORE);
+	        this.setCurrentUser = userActions.createDispatcher(appStore, userActions.setCurrentUser);
+	        this.setFilmFilter = userActions.createDispatcher(appStore, userActions.setFilmFilter);
+	        var usersToShowSelector = AdminComponent.createUsersToShowSelector();
+	        appStore.subscribe(function (state) {
+	            self.usersToShow = usersToShowSelector(state);
+	            self.currentUser = state.users.current;
+	            self.filmFilter = state.users.filmFilter;
+	        });
+	        appStore.dispatch(userActions.fetchUsers());
+	    }
+	    AdminComponent.createUsersToShowSelector = function () {
+	        var currentFilmSelector = reselect_1.createSelector(function (state) { return state.users.filmFilter; }, function (state) { return state.films.currentFilm; }, function (filmFilter, currentFilm) { return filmFilter && currentFilm ? currentFilm : null; });
+	        return reselect_1.createSelector(function (state) { return state.users.list; }, currentFilmSelector, function (users, currentFilm) { return currentFilm ? users.filter(AdminComponent.getFilter(currentFilm)) : users; });
+	    };
+	    ;
+	    AdminComponent.getFilter = function (film) {
+	        var ids = film.characters
+	            .map(function (url) { return AdminComponent.getId(url); })
+	            .reduce(function (idsMap, id) { return (idsMap[id] = true) && idsMap; }, {});
+	        return function (user) { return ids[AdminComponent.getId(user.url)]; };
+	    };
+	    ;
+	    AdminComponent.getId = function (url) {
+	        return url.replace(/[a-z\/\.\:]*/g, "");
+	    };
+	    ;
+	    AdminComponent = __decorate([
+	        core_1.Component({
+	            selector: 'admin',
+	            template: __webpack_require__(__webpack_module_template_argument_4__),
+	            directives: [users_view_1.UsersView, user_view_1.UserView]
+	        }), 
+	        __metadata('design:paramtypes', [CommBroker_1.CommBroker, user_actions_1.UserActions])
+	    ], AdminComponent);
+	    return AdminComponent;
+	})();
+	exports.AdminComponent = AdminComponent;
 
 
 /***/ },
 /* 854 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__) {
 
-	var FilmActions = __webpack_require__(__webpack_module_template_argument_0__);
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = function (state, action) {
-	    if (state === void 0) { state = []; }
-	    if (action === void 0) { action = {}; }
-	    switch (action.type) {
-	        case FilmActions.REQUEST_FILMS:
-	            return Object.assign({}, state, { isFetchingFilms: true });
-	        case FilmActions.RECEIVE_FILMS:
-	            return Object.assign({}, state, { isFetchingFilms: false, list: action.films });
-	        case FilmActions.REQUEST_FILM:
-	            return Object.assign({}, state, { isFetchingFilm: true });
-	        case FilmActions.RECEIVE_FILM:
-	            return Object.assign({}, state, { isFetchingFilm: false, currentFilm: action.film });
-	        case FilmActions.RECEIVE_NUMBER_OF_FILMS:
-	            return Object.assign({}, state, { count: action.count });
-	        case FilmActions.CURRENT_FILMS:
-	            return Object.assign({}, state, { current: action.currentIndex });
-	        default:
-	            return state;
-	    }
+	/* WEBPACK VAR INJECTION */(function(bootbox) {var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var Sliderpanel_1 = __webpack_require__(15);
+	var ModalDialog_1 = __webpack_require__(35);
+	var CommBroker_1 = __webpack_require__(7);
+	var Conts_1 = __webpack_require__(11);
+	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var MailModel_1 = __webpack_require__(64);
+	var CharCount_1 = __webpack_require__(206);
+	var common_1 = __webpack_require__(12);
+	var StartCapValidator_1 = __webpack_require__(209);
+	var NameTakenValidator_1 = __webpack_require__(208);
+	var Notes1 = (function (_super) {
+	    __extends(Notes1, _super);
+	    function Notes1(fb, sliderPanel, commBroker) {
+	        _super.call(this, sliderPanel, commBroker);
+	        this.sliderPanel = sliderPanel;
+	        this.commBroker = commBroker;
+	        this.slideLeft = 'notes2';
+	        this.notesForm = fb.group({
+	            'userName': ['', common_1.Validators.required],
+	            'phone': ['(xxx)-xxxx-xxx', common_1.Validators.minLength(10)],
+	            'notesTextArea': ['enter text here',
+	                common_1.Validators.compose([
+	                    common_1.Validators.required,
+	                    StartCapValidator_1.default])],
+	            'login': ['',
+	                common_1.Validators.compose([
+	                    common_1.Validators.required,
+	                    StartCapValidator_1.default]), NameTakenValidator_1.default]
+	        });
+	        this.notesTextArea = this.notesForm.controls['notesTextArea'];
+	        this.userName = this.notesForm.controls['userName'];
+	        this.login = this.notesForm.controls['login'];
+	        this.phone = this.notesForm.controls['phone'];
+	        this.model = new MailModel_1.MailModel(0, '', true, '', '');
+	        this.mapModel = new Map();
+	        this.mapModel.set('my name', 'Lion Demo');
+	        this.observeNameChange();
+	        this.observeFormChange();
+	        this.commBroker.getService(Conts_1.Consts.Services().Properties).setPropView('notes1');
+	    }
+	    Notes1.prototype.observeNameChange = function () {
+	        this.userName.valueChanges.debounceTime(100).subscribe(function (value) {
+	            console.log('name changed, notified via observable: ', value);
+	        });
+	    };
+	    Notes1.prototype.observeFormChange = function () {
+	        this.notesForm.valueChanges.debounceTime(100).subscribe(function (value) {
+	            console.log('forum changed, notified via observable: ', value);
+	        });
+	    };
+	    Notes1.prototype.onSubmit = function (event) {
+	        bootbox.alert("sent " + event.notesTextArea);
+	    };
+	    Notes1.prototype.onChange = function (event) {
+	        if (event.target.value.length < 3)
+	            console.log('text too short for subject');
+	    };
+	    Notes1 = __decorate([
+	        core_1.Component({
+	            selector: 'Notes1',
+	            directives: [ModalDialog_1.ModalDialog, common_1.FORM_DIRECTIVES],
+	            pipes: [CharCount_1.CharCount],
+	            styles: [__webpack_require__(__webpack_module_template_argument_1__)],
+	            template: __webpack_require__(__webpack_module_template_argument_2__)
+	        }), 
+	        __metadata('design:paramtypes', [common_1.FormBuilder, Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
+	    ], Notes1);
+	    return Notes1;
+	})(NotesBase_1.NotesBase);
+	exports.Notes1 = Notes1;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(58)))
 
 /***/ },
 /* 855 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__) {
 
-	var FilmActions = __webpack_require__(__webpack_module_template_argument_0__);
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = function (state, action) {
-	    if (state === void 0) { state = []; }
-	    if (action === void 0) { action = {}; }
-	    switch (action.type) {
-	        case FilmActions.REQUEST_FILMS:
-	            return Object.assign({}, state, { isFetchingFilms: true });
-	        case FilmActions.RECEIVE_FILMS:
-	            return Object.assign({}, state, { isFetchingFilms: false, list: action.films });
-	        case FilmActions.REQUEST_FILM:
-	            return Object.assign({}, state, { isFetchingFilm: true });
-	        case FilmActions.RECEIVE_FILM:
-	            return Object.assign({}, state, { isFetchingFilm: false, currentFilm: action.film });
-	        case FilmActions.RECEIVE_NUMBER_OF_FILMS:
-	            return Object.assign({}, state, { count: action.count });
-	        case FilmActions.CURRENT_FILMS:
-	            return Object.assign({}, state, { current: action.currentIndex });
-	        default:
-	            return state;
-	    }
+	/* WEBPACK VAR INJECTION */(function(bootbox) {var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var Sliderpanel_1 = __webpack_require__(15);
+	var ModalDialog_1 = __webpack_require__(35);
+	var CommBroker_1 = __webpack_require__(7);
+	var Conts_1 = __webpack_require__(11);
+	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
+	var MailModel_1 = __webpack_require__(64);
+	var CharCount_1 = __webpack_require__(206);
+	var common_1 = __webpack_require__(12);
+	var StartCapValidator_1 = __webpack_require__(209);
+	var NameTakenValidator_1 = __webpack_require__(208);
+	var Notes1 = (function (_super) {
+	    __extends(Notes1, _super);
+	    function Notes1(fb, sliderPanel, commBroker) {
+	        _super.call(this, sliderPanel, commBroker);
+	        this.sliderPanel = sliderPanel;
+	        this.commBroker = commBroker;
+	        this.slideLeft = 'notes2';
+	        this.notesForm = fb.group({
+	            'userName': ['', common_1.Validators.required],
+	            'phone': ['(xxx)-xxxx-xxx', common_1.Validators.minLength(10)],
+	            'notesTextArea': ['enter text here',
+	                common_1.Validators.compose([
+	                    common_1.Validators.required,
+	                    StartCapValidator_1.default])],
+	            'login': ['',
+	                common_1.Validators.compose([
+	                    common_1.Validators.required,
+	                    StartCapValidator_1.default]), NameTakenValidator_1.default]
+	        });
+	        this.notesTextArea = this.notesForm.controls['notesTextArea'];
+	        this.userName = this.notesForm.controls['userName'];
+	        this.login = this.notesForm.controls['login'];
+	        this.phone = this.notesForm.controls['phone'];
+	        this.model = new MailModel_1.MailModel(0, '', true, '', '');
+	        this.mapModel = new Map();
+	        this.mapModel.set('my name', 'Lion Demo');
+	        this.observeNameChange();
+	        this.observeFormChange();
+	        this.commBroker.getService(Conts_1.Consts.Services().Properties).setPropView('notes1');
+	    }
+	    Notes1.prototype.observeNameChange = function () {
+	        this.userName.valueChanges.debounceTime(100).subscribe(function (value) {
+	            console.log('name changed, notified via observable: ', value);
+	        });
+	    };
+	    Notes1.prototype.observeFormChange = function () {
+	        this.notesForm.valueChanges.debounceTime(100).subscribe(function (value) {
+	            console.log('forum changed, notified via observable: ', value);
+	        });
+	    };
+	    Notes1.prototype.onSubmit = function (event) {
+	        bootbox.alert("sent " + event.notesTextArea);
+	    };
+	    Notes1.prototype.onChange = function (event) {
+	        if (event.target.value.length < 3)
+	            console.log('text too short for subject');
+	    };
+	    Notes1 = __decorate([
+	        core_1.Component({
+	            selector: 'Notes1',
+	            directives: [ModalDialog_1.ModalDialog, common_1.FORM_DIRECTIVES],
+	            pipes: [CharCount_1.CharCount],
+	            styles: [__webpack_require__(__webpack_module_template_argument_1__)],
+	            template: __webpack_require__(__webpack_module_template_argument_2__)
+	        }), 
+	        __metadata('design:paramtypes', [common_1.FormBuilder, Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
+	    ], Notes1);
+	    return Notes1;
+	})(NotesBase_1.NotesBase);
+	exports.Notes1 = Notes1;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(58)))
 
 /***/ },
 /* 856 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
-
-	var PartActions = __webpack_require__(__webpack_module_template_argument_0__);
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = function (state, action) {
-	    if (state === void 0) { state = {}; }
-	    if (action === void 0) { action = {}; }
-	    switch (action.type) {
-	        case PartActions.ADD_PART:
-	            return { id: action.id, name: action.name };
-	        default:
-	            return state;
-	    }
-	};
-
-
-/***/ },
-/* 857 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
-
-	var PartActions = __webpack_require__(__webpack_module_template_argument_0__);
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = function (state, action) {
-	    if (state === void 0) { state = {}; }
-	    if (action === void 0) { action = {}; }
-	    switch (action.type) {
-	        case PartActions.ADD_PART:
-	            return { id: action.id, name: action.name };
-	        default:
-	            return state;
-	    }
-	};
-
-
-/***/ },
-/* 858 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__) {
-
-	var PartActions = __webpack_require__(__webpack_module_template_argument_0__);
-	var part_reducer_1 = __webpack_require__(__webpack_module_template_argument_1__);
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = function (state, action) {
-	    if (state === void 0) { state = []; }
-	    if (action === void 0) { action = {}; }
-	    switch (action.type) {
-	        case PartActions.ADD_PART:
-	            return state.concat([part_reducer_1.default(null, action)]);
-	        default:
-	            return state;
-	    }
-	};
-
-
-/***/ },
-/* 859 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__) {
-
-	var PartActions = __webpack_require__(__webpack_module_template_argument_0__);
-	var part_reducer_1 = __webpack_require__(__webpack_module_template_argument_1__);
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = function (state, action) {
-	    if (state === void 0) { state = []; }
-	    if (action === void 0) { action = {}; }
-	    switch (action.type) {
-	        case PartActions.ADD_PART:
-	            return state.concat([part_reducer_1.default(null, action)]);
-	        default:
-	            return state;
-	    }
-	};
-
-
-/***/ },
-/* 860 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
-
-	var UserActions = __webpack_require__(__webpack_module_template_argument_0__);
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = function (state, action) {
-	    if (state === void 0) { state = {}; }
-	    if (action === void 0) { action = {}; }
-	    switch (action.type) {
-	        case UserActions.REQUEST_USERS:
-	            return Object.assign({}, state, { isFetching: true });
-	        case UserActions.RECEIVE_USERS:
-	            return Object.assign({}, state, { isFetching: false, list: action.users, updated: action.updated });
-	        case UserActions.CURRENT_USER:
-	            return Object.assign({}, state, { current: action.current });
-	        case UserActions.SET_FILM_FILTER:
-	            return Object.assign({}, state, { filmFilter: action.filmFilter });
-	        default:
-	            return state;
-	    }
-	};
-
-
-/***/ },
-/* 861 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
-
-	var UserActions = __webpack_require__(__webpack_module_template_argument_0__);
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = function (state, action) {
-	    if (state === void 0) { state = {}; }
-	    if (action === void 0) { action = {}; }
-	    switch (action.type) {
-	        case UserActions.REQUEST_USERS:
-	            return Object.assign({}, state, { isFetching: true });
-	        case UserActions.RECEIVE_USERS:
-	            return Object.assign({}, state, { isFetching: false, list: action.users, updated: action.updated });
-	        case UserActions.CURRENT_USER:
-	            return Object.assign({}, state, { current: action.current });
-	        case UserActions.SET_FILM_FILTER:
-	            return Object.assign({}, state, { filmFilter: action.filmFilter });
-	        default:
-	            return state;
-	    }
-	};
-
-
-/***/ },
-/* 862 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__, __webpack_module_template_argument_5__, __webpack_module_template_argument_6__, __webpack_module_template_argument_7__, __webpack_module_template_argument_8__, __webpack_module_template_argument_9__, __webpack_module_template_argument_10__, __webpack_module_template_argument_11__, __webpack_module_template_argument_12__) {
-
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(1);
-	var redux_1 = __webpack_require__(180);
-	var thunk = __webpack_require__(179);
-	var parts_reducer_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var cart_reducer_1 = __webpack_require__(__webpack_module_template_argument_1__);
-	var films_reducer_1 = __webpack_require__(__webpack_module_template_argument_2__);
-	var users_reducer_1 = __webpack_require__(__webpack_module_template_argument_3__);
-	var angular2_redux_util_1 = __webpack_require__(20);
-	var shopping_component_1 = __webpack_require__(__webpack_module_template_argument_4__);
-	var CommBroker_1 = __webpack_require__(7);
-	var part_actions_1 = __webpack_require__(__webpack_module_template_argument_5__);
-	var cart_actions_1 = __webpack_require__(__webpack_module_template_argument_6__);
-	var Consts = __webpack_require__(__webpack_module_template_argument_7__);
-	var admin_component_1 = __webpack_require__(__webpack_module_template_argument_8__);
-	var films_component_1 = __webpack_require__(__webpack_module_template_argument_9__);
-	var user_actions_1 = __webpack_require__(__webpack_module_template_argument_10__);
-	var film_actions_1 = __webpack_require__(__webpack_module_template_argument_11__);
-	var appStoreFactory = function () {
-	    var reducers = redux_1.combineReducers({ parts: parts_reducer_1.default, cart: cart_reducer_1.default, films: films_reducer_1.default, users: users_reducer_1.default });
-	    var middlewareEnhancer = redux_1.applyMiddleware(thunk, angular2_redux_util_1.LoggerMiddleware);
-	    var isDebug = window.devToolsExtension;
-	    var applyDevTools = function () { return isDebug ? window.devToolsExtension() : function (f) { return f; }; };
-	    var enhancers = redux_1.compose(middlewareEnhancer, applyDevTools());
-	    var createStoreWithEnhancers = enhancers(redux_1.createStore);
-	    var reduxAppStore = createStoreWithEnhancers(reducers);
-	    return new angular2_redux_util_1.AppStore(reduxAppStore);
-	};
-	var Newsboard = (function () {
-	    function Newsboard(commBroker) {
-	        this.commBroker = commBroker;
-	        var reduxAppStore = appStoreFactory();
-	        this.commBroker.setService(Consts.APP_STORE, reduxAppStore);
-	    }
-	    Newsboard = __decorate([
-	        core_1.Component({
-	            selector: 'Newsboard',
-	            directives: [shopping_component_1.ShoppingComponent, admin_component_1.AdminComponent, films_component_1.FilmsComponent],
-	            template: __webpack_require__(__webpack_module_template_argument_12__),
-	            providers: [part_actions_1.PartActions, cart_actions_1.CartActions, part_actions_1.PartActions, user_actions_1.UserActions, film_actions_1.FilmActions]
-	        }), 
-	        __metadata('design:paramtypes', [CommBroker_1.CommBroker])
-	    ], Newsboard);
-	    return Newsboard;
-	})();
-	exports.Newsboard = Newsboard;
-
-
-/***/ },
-/* 863 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__, __webpack_module_template_argument_5__, __webpack_module_template_argument_6__, __webpack_module_template_argument_7__, __webpack_module_template_argument_8__, __webpack_module_template_argument_9__, __webpack_module_template_argument_10__, __webpack_module_template_argument_11__, __webpack_module_template_argument_12__) {
-
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(1);
-	var redux_1 = __webpack_require__(180);
-	var thunk = __webpack_require__(179);
-	var parts_reducer_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var cart_reducer_1 = __webpack_require__(__webpack_module_template_argument_1__);
-	var films_reducer_1 = __webpack_require__(__webpack_module_template_argument_2__);
-	var users_reducer_1 = __webpack_require__(__webpack_module_template_argument_3__);
-	var angular2_redux_util_1 = __webpack_require__(20);
-	var shopping_component_1 = __webpack_require__(__webpack_module_template_argument_4__);
-	var CommBroker_1 = __webpack_require__(7);
-	var part_actions_1 = __webpack_require__(__webpack_module_template_argument_5__);
-	var cart_actions_1 = __webpack_require__(__webpack_module_template_argument_6__);
-	var Consts = __webpack_require__(__webpack_module_template_argument_7__);
-	var admin_component_1 = __webpack_require__(__webpack_module_template_argument_8__);
-	var films_component_1 = __webpack_require__(__webpack_module_template_argument_9__);
-	var user_actions_1 = __webpack_require__(__webpack_module_template_argument_10__);
-	var film_actions_1 = __webpack_require__(__webpack_module_template_argument_11__);
-	var appStoreFactory = function () {
-	    var reducers = redux_1.combineReducers({ parts: parts_reducer_1.default, cart: cart_reducer_1.default, films: films_reducer_1.default, users: users_reducer_1.default });
-	    var middlewareEnhancer = redux_1.applyMiddleware(thunk, angular2_redux_util_1.LoggerMiddleware);
-	    var isDebug = window.devToolsExtension;
-	    var applyDevTools = function () { return isDebug ? window.devToolsExtension() : function (f) { return f; }; };
-	    var enhancers = redux_1.compose(middlewareEnhancer, applyDevTools());
-	    var createStoreWithEnhancers = enhancers(redux_1.createStore);
-	    var reduxAppStore = createStoreWithEnhancers(reducers);
-	    return new angular2_redux_util_1.AppStore(reduxAppStore);
-	};
-	var Newsboard = (function () {
-	    function Newsboard(commBroker) {
-	        this.commBroker = commBroker;
-	        var reduxAppStore = appStoreFactory();
-	        this.commBroker.setService(Consts.APP_STORE, reduxAppStore);
-	    }
-	    Newsboard = __decorate([
-	        core_1.Component({
-	            selector: 'Newsboard',
-	            directives: [shopping_component_1.ShoppingComponent, admin_component_1.AdminComponent, films_component_1.FilmsComponent],
-	            template: __webpack_require__(__webpack_module_template_argument_12__),
-	            providers: [part_actions_1.PartActions, cart_actions_1.CartActions, part_actions_1.PartActions, user_actions_1.UserActions, film_actions_1.FilmActions]
-	        }), 
-	        __metadata('design:paramtypes', [CommBroker_1.CommBroker])
-	    ], Newsboard);
-	    return Newsboard;
-	})();
-	exports.Newsboard = Newsboard;
-
-
-/***/ },
-/* 864 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__) {
-
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(1);
-	var user_actions_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var users_view_1 = __webpack_require__(__webpack_module_template_argument_1__);
-	var user_view_1 = __webpack_require__(__webpack_module_template_argument_2__);
-	var reselect_1 = __webpack_require__(32);
-	var CommBroker_1 = __webpack_require__(7);
-	var Consts = __webpack_require__(__webpack_module_template_argument_3__);
-	var AdminComponent = (function () {
-	    function AdminComponent(commBroker, userActions) {
-	        this.usersToShow = null;
-	        this.currentUser = null;
-	        this.filmFilter = null;
-	        var self = this;
-	        var appStore = commBroker.getService(Consts.APP_STORE);
-	        this.setCurrentUser = userActions.createDispatcher(appStore, userActions.setCurrentUser);
-	        this.setFilmFilter = userActions.createDispatcher(appStore, userActions.setFilmFilter);
-	        var usersToShowSelector = AdminComponent.createUsersToShowSelector();
-	        appStore.subscribe(function (state) {
-	            self.usersToShow = usersToShowSelector(state);
-	            self.currentUser = state.users.current;
-	            self.filmFilter = state.users.filmFilter;
-	        });
-	        appStore.dispatch(userActions.fetchUsers());
-	    }
-	    AdminComponent.createUsersToShowSelector = function () {
-	        var currentFilmSelector = reselect_1.createSelector(function (state) { return state.users.filmFilter; }, function (state) { return state.films.currentFilm; }, function (filmFilter, currentFilm) { return filmFilter && currentFilm ? currentFilm : null; });
-	        return reselect_1.createSelector(function (state) { return state.users.list; }, currentFilmSelector, function (users, currentFilm) { return currentFilm ? users.filter(AdminComponent.getFilter(currentFilm)) : users; });
-	    };
-	    ;
-	    AdminComponent.getFilter = function (film) {
-	        var ids = film.characters
-	            .map(function (url) { return AdminComponent.getId(url); })
-	            .reduce(function (idsMap, id) { return (idsMap[id] = true) && idsMap; }, {});
-	        return function (user) { return ids[AdminComponent.getId(user.url)]; };
-	    };
-	    ;
-	    AdminComponent.getId = function (url) {
-	        return url.replace(/[a-z\/\.\:]*/g, "");
-	    };
-	    ;
-	    AdminComponent = __decorate([
-	        core_1.Component({
-	            selector: 'admin',
-	            template: __webpack_require__(__webpack_module_template_argument_4__),
-	            directives: [users_view_1.UsersView, user_view_1.UserView]
-	        }), 
-	        __metadata('design:paramtypes', [CommBroker_1.CommBroker, user_actions_1.UserActions])
-	    ], AdminComponent);
-	    return AdminComponent;
-	})();
-	exports.AdminComponent = AdminComponent;
-
-
-/***/ },
-/* 865 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__) {
-
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(1);
-	var user_actions_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var users_view_1 = __webpack_require__(__webpack_module_template_argument_1__);
-	var user_view_1 = __webpack_require__(__webpack_module_template_argument_2__);
-	var reselect_1 = __webpack_require__(32);
-	var CommBroker_1 = __webpack_require__(7);
-	var Consts = __webpack_require__(__webpack_module_template_argument_3__);
-	var AdminComponent = (function () {
-	    function AdminComponent(commBroker, userActions) {
-	        this.usersToShow = null;
-	        this.currentUser = null;
-	        this.filmFilter = null;
-	        var self = this;
-	        var appStore = commBroker.getService(Consts.APP_STORE);
-	        this.setCurrentUser = userActions.createDispatcher(appStore, userActions.setCurrentUser);
-	        this.setFilmFilter = userActions.createDispatcher(appStore, userActions.setFilmFilter);
-	        var usersToShowSelector = AdminComponent.createUsersToShowSelector();
-	        appStore.subscribe(function (state) {
-	            self.usersToShow = usersToShowSelector(state);
-	            self.currentUser = state.users.current;
-	            self.filmFilter = state.users.filmFilter;
-	        });
-	        appStore.dispatch(userActions.fetchUsers());
-	    }
-	    AdminComponent.createUsersToShowSelector = function () {
-	        var currentFilmSelector = reselect_1.createSelector(function (state) { return state.users.filmFilter; }, function (state) { return state.films.currentFilm; }, function (filmFilter, currentFilm) { return filmFilter && currentFilm ? currentFilm : null; });
-	        return reselect_1.createSelector(function (state) { return state.users.list; }, currentFilmSelector, function (users, currentFilm) { return currentFilm ? users.filter(AdminComponent.getFilter(currentFilm)) : users; });
-	    };
-	    ;
-	    AdminComponent.getFilter = function (film) {
-	        var ids = film.characters
-	            .map(function (url) { return AdminComponent.getId(url); })
-	            .reduce(function (idsMap, id) { return (idsMap[id] = true) && idsMap; }, {});
-	        return function (user) { return ids[AdminComponent.getId(user.url)]; };
-	    };
-	    ;
-	    AdminComponent.getId = function (url) {
-	        return url.replace(/[a-z\/\.\:]*/g, "");
-	    };
-	    ;
-	    AdminComponent = __decorate([
-	        core_1.Component({
-	            selector: 'admin',
-	            template: __webpack_require__(__webpack_module_template_argument_4__),
-	            directives: [users_view_1.UsersView, user_view_1.UserView]
-	        }), 
-	        __metadata('design:paramtypes', [CommBroker_1.CommBroker, user_actions_1.UserActions])
-	    ], AdminComponent);
-	    return AdminComponent;
-	})();
-	exports.AdminComponent = AdminComponent;
-
-
-/***/ },
-/* 866 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__) {
-
-	/* WEBPACK VAR INJECTION */(function(bootbox) {var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(1);
-	var Sliderpanel_1 = __webpack_require__(15);
-	var ModalDialog_1 = __webpack_require__(35);
-	var CommBroker_1 = __webpack_require__(7);
-	var Conts_1 = __webpack_require__(11);
-	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var MailModel_1 = __webpack_require__(64);
-	var CharCount_1 = __webpack_require__(206);
-	var common_1 = __webpack_require__(12);
-	var StartCapValidator_1 = __webpack_require__(209);
-	var NameTakenValidator_1 = __webpack_require__(208);
-	var Notes1 = (function (_super) {
-	    __extends(Notes1, _super);
-	    function Notes1(fb, sliderPanel, commBroker) {
-	        _super.call(this, sliderPanel, commBroker);
-	        this.sliderPanel = sliderPanel;
-	        this.commBroker = commBroker;
-	        this.slideLeft = 'notes2';
-	        this.notesForm = fb.group({
-	            'userName': ['', common_1.Validators.required],
-	            'phone': ['(xxx)-xxxx-xxx', common_1.Validators.minLength(10)],
-	            'notesTextArea': ['enter text here',
-	                common_1.Validators.compose([
-	                    common_1.Validators.required,
-	                    StartCapValidator_1.default])],
-	            'login': ['',
-	                common_1.Validators.compose([
-	                    common_1.Validators.required,
-	                    StartCapValidator_1.default]), NameTakenValidator_1.default]
-	        });
-	        this.notesTextArea = this.notesForm.controls['notesTextArea'];
-	        this.userName = this.notesForm.controls['userName'];
-	        this.login = this.notesForm.controls['login'];
-	        this.phone = this.notesForm.controls['phone'];
-	        this.model = new MailModel_1.MailModel(0, '', true, '', '');
-	        this.mapModel = new Map();
-	        this.mapModel.set('my name', 'Lion Demo');
-	        this.observeNameChange();
-	        this.observeFormChange();
-	        this.commBroker.getService(Conts_1.Consts.Services().Properties).setPropView('notes1');
-	    }
-	    Notes1.prototype.observeNameChange = function () {
-	        this.userName.valueChanges.debounceTime(100).subscribe(function (value) {
-	            console.log('name changed, notified via observable: ', value);
-	        });
-	    };
-	    Notes1.prototype.observeFormChange = function () {
-	        this.notesForm.valueChanges.debounceTime(100).subscribe(function (value) {
-	            console.log('forum changed, notified via observable: ', value);
-	        });
-	    };
-	    Notes1.prototype.onSubmit = function (event) {
-	        bootbox.alert("sent " + event.notesTextArea);
-	    };
-	    Notes1.prototype.onChange = function (event) {
-	        if (event.target.value.length < 3)
-	            console.log('text too short for subject');
-	    };
-	    Notes1 = __decorate([
-	        core_1.Component({
-	            selector: 'Notes1',
-	            directives: [ModalDialog_1.ModalDialog, common_1.FORM_DIRECTIVES],
-	            pipes: [CharCount_1.CharCount],
-	            styles: [__webpack_require__(__webpack_module_template_argument_1__)],
-	            template: __webpack_require__(__webpack_module_template_argument_2__)
-	        }), 
-	        __metadata('design:paramtypes', [common_1.FormBuilder, Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
-	    ], Notes1);
-	    return Notes1;
-	})(NotesBase_1.NotesBase);
-	exports.Notes1 = Notes1;
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(58)))
-
-/***/ },
-/* 867 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__) {
-
-	/* WEBPACK VAR INJECTION */(function(bootbox) {var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(1);
-	var Sliderpanel_1 = __webpack_require__(15);
-	var ModalDialog_1 = __webpack_require__(35);
-	var CommBroker_1 = __webpack_require__(7);
-	var Conts_1 = __webpack_require__(11);
-	var NotesBase_1 = __webpack_require__(__webpack_module_template_argument_0__);
-	var MailModel_1 = __webpack_require__(64);
-	var CharCount_1 = __webpack_require__(206);
-	var common_1 = __webpack_require__(12);
-	var StartCapValidator_1 = __webpack_require__(209);
-	var NameTakenValidator_1 = __webpack_require__(208);
-	var Notes1 = (function (_super) {
-	    __extends(Notes1, _super);
-	    function Notes1(fb, sliderPanel, commBroker) {
-	        _super.call(this, sliderPanel, commBroker);
-	        this.sliderPanel = sliderPanel;
-	        this.commBroker = commBroker;
-	        this.slideLeft = 'notes2';
-	        this.notesForm = fb.group({
-	            'userName': ['', common_1.Validators.required],
-	            'phone': ['(xxx)-xxxx-xxx', common_1.Validators.minLength(10)],
-	            'notesTextArea': ['enter text here',
-	                common_1.Validators.compose([
-	                    common_1.Validators.required,
-	                    StartCapValidator_1.default])],
-	            'login': ['',
-	                common_1.Validators.compose([
-	                    common_1.Validators.required,
-	                    StartCapValidator_1.default]), NameTakenValidator_1.default]
-	        });
-	        this.notesTextArea = this.notesForm.controls['notesTextArea'];
-	        this.userName = this.notesForm.controls['userName'];
-	        this.login = this.notesForm.controls['login'];
-	        this.phone = this.notesForm.controls['phone'];
-	        this.model = new MailModel_1.MailModel(0, '', true, '', '');
-	        this.mapModel = new Map();
-	        this.mapModel.set('my name', 'Lion Demo');
-	        this.observeNameChange();
-	        this.observeFormChange();
-	        this.commBroker.getService(Conts_1.Consts.Services().Properties).setPropView('notes1');
-	    }
-	    Notes1.prototype.observeNameChange = function () {
-	        this.userName.valueChanges.debounceTime(100).subscribe(function (value) {
-	            console.log('name changed, notified via observable: ', value);
-	        });
-	    };
-	    Notes1.prototype.observeFormChange = function () {
-	        this.notesForm.valueChanges.debounceTime(100).subscribe(function (value) {
-	            console.log('forum changed, notified via observable: ', value);
-	        });
-	    };
-	    Notes1.prototype.onSubmit = function (event) {
-	        bootbox.alert("sent " + event.notesTextArea);
-	    };
-	    Notes1.prototype.onChange = function (event) {
-	        if (event.target.value.length < 3)
-	            console.log('text too short for subject');
-	    };
-	    Notes1 = __decorate([
-	        core_1.Component({
-	            selector: 'Notes1',
-	            directives: [ModalDialog_1.ModalDialog, common_1.FORM_DIRECTIVES],
-	            pipes: [CharCount_1.CharCount],
-	            styles: [__webpack_require__(__webpack_module_template_argument_1__)],
-	            template: __webpack_require__(__webpack_module_template_argument_2__)
-	        }), 
-	        __metadata('design:paramtypes', [common_1.FormBuilder, Sliderpanel_1.Sliderpanel, CommBroker_1.CommBroker])
-	    ], Notes1);
-	    return Notes1;
-	})(NotesBase_1.NotesBase);
-	exports.Notes1 = Notes1;
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(58)))
-
-/***/ },
-/* 868 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__) {
 
 	/* WEBPACK VAR INJECTION */(function(jQuery) {var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -21887,7 +21837,7 @@ webpackJsonp([1],[
 	var core_1 = __webpack_require__(1);
 	var TodoRemote_1 = __webpack_require__(__webpack_module_template_argument_0__);
 	var Observable_1 = __webpack_require__(3);
-	__webpack_require__(44);
+	__webpack_require__(43);
 	__webpack_require__(81);
 	__webpack_require__(21);
 	__webpack_require__(113);
@@ -21959,7 +21909,7 @@ webpackJsonp([1],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
 
 /***/ },
-/* 869 */
+/* 857 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__) {
 
 	/* WEBPACK VAR INJECTION */(function(jQuery) {var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -21974,7 +21924,7 @@ webpackJsonp([1],[
 	var core_1 = __webpack_require__(1);
 	var TodoRemote_1 = __webpack_require__(__webpack_module_template_argument_0__);
 	var Observable_1 = __webpack_require__(3);
-	__webpack_require__(44);
+	__webpack_require__(43);
 	__webpack_require__(81);
 	__webpack_require__(21);
 	__webpack_require__(113);
