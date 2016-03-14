@@ -2783,7 +2783,7 @@ webpackJsonp([1],[
 /* 317 */,
 /* 318 */,
 /* 319 */
-[822, 192],
+[823, 192],
 /* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -2841,11 +2841,11 @@ webpackJsonp([1],[
 
 /***/ },
 /* 321 */
-[822, 128],
+[823, 128],
 /* 322 */
 [857, 321, 452, 438],
 /* 323 */
-[822, 131],
+[823, 131],
 /* 324 */
 [857, 323, 458, 442],
 /* 325 */
@@ -17005,7 +17005,7 @@ webpackJsonp([1],[
 
 /***/ },
 /* 660 */
-[819, 661],
+[818, 661],
 /* 661 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -17450,15 +17450,15 @@ webpackJsonp([1],[
 
 /***/ },
 /* 671 */
-[824, 84],
+[825, 84],
 /* 672 */
-[827, 84],
+[826, 84],
 /* 673 */
 [828, 84],
 /* 674 */
-[831, 84],
+[830, 84],
 /* 675 */
-[832, 670],
+[833, 670],
 /* 676 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -17515,7 +17515,7 @@ webpackJsonp([1],[
 
 /***/ },
 /* 677 */
-[835, 678, 676],
+[834, 678, 676],
 /* 678 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -17892,7 +17892,7 @@ webpackJsonp([1],[
 
 /***/ },
 /* 686 */
-[837, 194, 684, 685, 124],
+[836, 194, 684, 685, 124],
 /* 687 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -17948,7 +17948,7 @@ webpackJsonp([1],[
 
 /***/ },
 /* 688 */
-[839, 193, 125, 687, 683, 681, 124],
+[838, 193, 125, 687, 683, 681, 124],
 /* 689 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -18030,7 +18030,7 @@ webpackJsonp([1],[
 /* 691 */
 [840, 193],
 /* 692 */
-[842, 194],
+[843, 194],
 /* 693 */
 [845, 125],
 /* 694 */
@@ -18140,7 +18140,7 @@ webpackJsonp([1],[
 /* 697 */
 667,
 /* 698 */
-[819, 699],
+[818, 699],
 /* 699 */
 661,
 /* 700 */
@@ -18156,11 +18156,11 @@ webpackJsonp([1],[
 /* 705 */
 685,
 /* 706 */
-[837, 197, 704, 705, 126],
+[836, 197, 704, 705, 126],
 /* 707 */
 687,
 /* 708 */
-[839, 196, 127, 707, 703, 701, 126],
+[838, 196, 127, 707, 703, 701, 126],
 /* 709 */
 689,
 /* 710 */
@@ -18168,7 +18168,7 @@ webpackJsonp([1],[
 /* 711 */
 [840, 196],
 /* 712 */
-[842, 197],
+[843, 197],
 /* 713 */
 [845, 127],
 /* 714 */
@@ -18178,19 +18178,19 @@ webpackJsonp([1],[
 /* 716 */
 668,
 /* 717 */
-[855, 85, 436, 451],
+[854, 85, 436, 451],
 /* 718 */
 670,
 /* 719 */
-[824, 85],
+[825, 85],
 /* 720 */
-[827, 85],
+[826, 85],
 /* 721 */
 [828, 85],
 /* 722 */
-[831, 85],
+[830, 85],
 /* 723 */
-[832, 718],
+[833, 718],
 /* 724 */
 662,
 /* 725 */
@@ -18978,7 +18978,7 @@ webpackJsonp([1],[
 /* 728 */
 676,
 /* 729 */
-[835, 730, 728],
+[834, 730, 728],
 /* 730 */
 678,
 /* 731 */
@@ -19083,7 +19083,7 @@ webpackJsonp([1],[
 /* 732 */
 667,
 /* 733 */
-[819, 734],
+[818, 734],
 /* 734 */
 661,
 /* 735 */
@@ -19099,11 +19099,11 @@ webpackJsonp([1],[
 /* 740 */
 685,
 /* 741 */
-[837, 200, 739, 740, 129],
+[836, 200, 739, 740, 129],
 /* 742 */
 687,
 /* 743 */
-[839, 199, 130, 742, 738, 736, 129],
+[838, 199, 130, 742, 738, 736, 129],
 /* 744 */
 689,
 /* 745 */
@@ -19111,7 +19111,7 @@ webpackJsonp([1],[
 /* 746 */
 [840, 199],
 /* 747 */
-[842, 200],
+[843, 200],
 /* 748 */
 [845, 130],
 /* 749 */
@@ -19121,19 +19121,19 @@ webpackJsonp([1],[
 /* 751 */
 668,
 /* 752 */
-[855, 86, 440, 457],
+[854, 86, 440, 457],
 /* 753 */
 670,
 /* 754 */
-[824, 86],
+[825, 86],
 /* 755 */
-[827, 86],
+[826, 86],
 /* 756 */
 [828, 86],
 /* 757 */
-[831, 86],
+[830, 86],
 /* 758 */
-[832, 753],
+[833, 753],
 /* 759 */
 662,
 /* 760 */
@@ -19401,7 +19401,7 @@ webpackJsonp([1],[
 	        if (req == 'pictures')
 	            tx.executeSql("SELECT pic_id FROM pictures WHERE 1 LIMIT 1", [], cbFunctionSuccess, cbFunctionError);
 	        if (req == 'cpr')
-	            tx.executeSql("SELECT prod_num FROM onion.customer_product_relationship INNER JOIN onion.produkt ON cpr_prod_id = prod_id AND prod_status_lifecycle NOT IN('RIP', 'BAD', 'TBA', 'DEV') INNER JOIN onion.batch ON batch_prod_id = prod_id AND batch_status = 'master' INNER JOIN onion.brand ON br_id = prod_br_id INNER JOIN onion.kunde ON cpr_kund_id = kund_id AND kund_status = 'active' AND IFNULL(kund_vertreter, '') != '' AND (kund_id = 2321) INNER JOIN onion.product_pricelist ON ppl_prod_id = prod_id AND ppl_pl_id = kund_preisliste LEFT JOIN onion.product_pricelist_promotion ON (ppl_id = pplp_ppl_id AND (pplp_status = 'active' OR pplp_status = 'pending')) LEFT JOIN onion.relation_product_inventory ON prodinv_prod_id = prod_id AND prodinv_inv_id = 1 LEFT JOIN onion.customer_visit ON cuvis_cust_id = kund_id AND (cuvis_status IN('draft', 'confirmed') AND (cuvis_usr_id = 'MUR' OR cuvis_usr_id IS NULL) AND (cuvis_id = 'MUR2016030715263933657' AND cuvis_cust_id = 2321)) LEFT JOIN onion.customer_visit_line ON (cuvisl_cuvis_id = cuvis_id AND cuvisl_prod_id = prod_id) WHERE 1 AND ((product_pricelist_promotion.pplp_id = customer_visit_line.cuvisl_pplp_id) OR (ISNULL(customer_visit_line.cuvisl_pplp_id))) GROUP BY `prod_id` ORDER BY pplp_status ASC, cpr_department_name, cpr_main_commodity_group_name, cpr_commodity_group_name, ppl_current_standard_price, br_name, prod_num LIMIT 0, 1", [], cbFunctionSuccess, cbFunctionError);
+	            tx.executeSql("SELECT DISTINCT cpr_id FROM kunde INNER JOIN customer_product_relationship ON ( cpr_kund_id = 2321 AND kund_id = cpr_kund_id ) INNER JOIN produkt ON ( prod_status_lifecycle NOT IN('RIP', 'BAD', 'TBA', 'DEV') AND cpr_prod_id = prod_id ) INNER JOIN brand ON ( prod_br_id = br_id ) INNER JOIN batch ON ( batch_status = 'master' AND prod_id = batch_prod_id ) INNER JOIN product_pricelist ON ( produkt.prod_id = product_pricelist.ppl_prod_id ) LEFT JOIN product_pricelist_promotion ON ( (pplp_status = 'active' OR pplp_status = 'pending') AND ppl_id = pplp_ppl_id ) LEFT JOIN relation_product_inventory ON ( prodinv_inv_id = 1 AND prodinv_prod_id = prod_id ) LEFT JOIN customer_visit ON ( cuvis_status IN('draft', 'confirmed') AND (cuvis_usr_id = 'MUR' OR cuvis_usr_id IS NULL) AND (cuvis_id = 'MUR2016030715263933657' AND cuvis_cust_id = 2321) AND cuvis_cust_id = kund_id ) LEFT JOIN customer_visit_line ON ( cuvisl_cuvis_id = cuvis_id AND cuvisl_prod_id = prod_id AND ((product_pricelist_promotion.pplp_id = customer_visit_line.cuvisl_pplp_id) OR ((customer_visit_line.cuvisl_pplp_id) ISNULL)) ) WHERE 1 AND ((product_pricelist_promotion.pplp_id = customer_visit_line.cuvisl_pplp_id) OR ((customer_visit_line.cuvisl_pplp_id) ISNULL)) GROUP BY `cpr_id` ORDER BY cpr_id ASC LIMIT 100", [], cbFunctionSuccess, cbFunctionError);
 	    };
 	    TodoList.prototype.goSearch = function (req, valueObject) {
 	        var vm = this;
@@ -19457,7 +19457,7 @@ webpackJsonp([1],[
 /* 763 */
 676,
 /* 764 */
-[835, 765, 763],
+[834, 765, 763],
 /* 765 */
 678,
 /* 766 */
